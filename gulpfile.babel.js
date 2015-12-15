@@ -1,9 +1,10 @@
 import gulp from 'gulp';
 import del from 'del';
-import {components} from './tasks/components';
+import {components, pages} from './tasks/interfaces';
 import {fonts} from './tasks/fonts';
 import {images} from './tasks/images';
 import {scripts} from './tasks/scripts';
+import {server} from './tasks/server';
 import {styles} from './tasks/styles';
 
 function clean() {
@@ -14,7 +15,10 @@ function clean() {
 let build = gulp.series(
   clean,
   // move components first
-  components,
+  gulp.parallel(
+    components,
+    pages
+  ),
   // then process the assets
   gulp.parallel(
     fonts,
@@ -24,4 +28,10 @@ let build = gulp.series(
   )
 );
 
+let localServe = gulp.series(
+  build,
+  server
+);
+
 gulp.task('build', build);
+gulp.task('serve', localServe);
