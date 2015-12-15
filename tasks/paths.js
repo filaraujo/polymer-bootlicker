@@ -5,7 +5,8 @@ const paths = {
   fonts: 'app/fonts/**/*',
   images: 'app/**/*.{png,jpg,jpeg,gif}',
   src: 'src',
-  scripts: 'app/**/*.js'
+  scripts: 'app/**/*.js',
+  styles: 'app/**/*.css'
 };
 
 export { paths };
