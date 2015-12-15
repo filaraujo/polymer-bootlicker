@@ -78,7 +78,6 @@ Polymer({
    * The `foo-baz-lasers` event is fired whenever `fireLasers` is called.
    *
    * @event foo-baz-lasers
-   * @detail {{sound: String}}
    */
 
   /**
