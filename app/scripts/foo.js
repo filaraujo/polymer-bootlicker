@@ -2,6 +2,6 @@ var obj = {
   foo: 'bar'
 };
 
-let { foo } = obj;
+let {foo} = obj;
 
 console.log(foo);
