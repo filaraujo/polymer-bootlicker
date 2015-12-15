@@ -1,5 +1,7 @@
 import babel from 'gulp-babel';
 import gulp from 'gulp';
+import jshint from 'gulp-jshint';
+import jshintStylish from 'jshint-stylish';
 import {paths} from '../tasks/paths.js';
 import sourcemaps from 'gulp-sourcemaps';
 import size from 'gulp-size';
@@ -11,6 +13,9 @@ const uglifyConfig = {preserveComments: 'some'};
 
 export function scripts() {
   return gulp.src(paths.scripts)
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(jshint.reporter('fail'))
     .pipe(sourcemaps.init())
     .pipe(babel(babelConfig))
     .pipe(uglify(uglifyConfig))
