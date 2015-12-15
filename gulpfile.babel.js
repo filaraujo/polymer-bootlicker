@@ -3,13 +3,22 @@ import del from 'del';
 import {components, pages} from './tasks/interfaces';
 import {fonts} from './tasks/fonts';
 import {images} from './tasks/images';
+import {paths} from './tasks/paths';
 import {scripts} from './tasks/scripts';
-import {server} from './tasks/server';
+import {reload, server} from './tasks/server';
 import {styles} from './tasks/styles';
 
 function clean() {
   console.log('clean');
   return del('./dist');
+}
+
+function watch() {
+  let watchableTasks = [fonts, images, scripts, styles];
+
+  watchableTasks.forEach(function(task) {
+    gulp.watch(paths[task.name], gulp.series(task, reload));
+  });
 }
 
 let build = gulp.series(
@@ -30,7 +39,10 @@ let build = gulp.series(
 
 let localServe = gulp.series(
   build,
-  server
+  gulp.parallel(
+    server,
+    watch
+  )
 );
 
 gulp.task('build', build);

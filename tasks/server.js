@@ -10,3 +10,7 @@ export function server() {
     }
   });
 }
+
+export function reload() {
+  server.reload();
+}
