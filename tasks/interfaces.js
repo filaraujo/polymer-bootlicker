@@ -1,14 +1,24 @@
 import gulp from 'gulp';
 import {paths} from '../tasks/paths.js';
+import useref from 'gulp-useref';
 
-export function components() {
+let indexPage = `${paths.app}/index.html`;
+let polybuildConfig = {maximumCrush: true};
+
+function components() {
   return gulp.src(paths.components, {base: paths.app})
     .pipe(gulp.dest(paths.dist));
 }
 
-export function pages() {
-  var path = `${paths.app}/index.html`;
-
-  return gulp.src(path, {base: paths.app})
+function pages() {
+  return gulp.src(indexPage, {base: paths.app})
     .pipe(gulp.dest(paths.dist));
 }
+
+export function useReferences() {
+  return gulp.src(indexPage, {base: paths.app})
+    .pipe(useref())
+    .pipe(gulp.dest(paths.dist));
+}
+
+export let interfaces = gulp.parallel(components, pages);

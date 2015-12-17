@@ -1,7 +1,2 @@
-var obj = {
-  foo: 'bar'
-};
-
-let {foo} = obj;
-
+let foo = 'foo';
 console.log(foo);

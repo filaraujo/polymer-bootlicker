@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import del from 'del';
-import {components, pages} from './tasks/interfaces';
+import {interfaces, useReferences} from './tasks/interfaces';
 import {fonts} from './tasks/fonts';
 import {images} from './tasks/images';
 import {paths} from './tasks/paths';
@@ -21,29 +21,26 @@ function watch() {
   });
 }
 
+let serveAndWatch = gulp.parallel(server, watch);
+let processAssets = gulp.parallel(fonts, images, scripts, styles);
+
 let build = gulp.series(
   clean,
-  // move components first
-  gulp.parallel(
-    components,
-    pages
-  ),
-  // then process the assets
-  gulp.parallel(
-    fonts,
-    images,
-    scripts,
-    styles
-  )
+  interfaces,
+  processAssets
 );
 
 let localServe = gulp.series(
   build,
-  gulp.parallel(
-    server,
-    watch
-  )
+  serveAndWatch
+);
+
+let localDist = gulp.series(
+  build,
+  useReferences,
+  serveAndWatch
 );
 
 gulp.task('build', build);
 gulp.task('serve', localServe);
+gulp.task('serve:dist', localDist);
