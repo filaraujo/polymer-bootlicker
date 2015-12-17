@@ -16,7 +16,7 @@ function clean() {
 function watch() {
   let watchableTasks = [fonts, images, scripts, styles];
 
-  watchableTasks.forEach(function(task) {
+  watchableTasks.forEach(task => {
     gulp.watch(paths[task.name], gulp.series(task, reload));
   });
 }

@@ -7,7 +7,7 @@ export function components() {
 }
 
 export function pages() {
-  var path = paths.app + '/index.html';
+  var path = `${paths.app}/index.html`;
 
   return gulp.src(path, {base: paths.app})
     .pipe(gulp.dest(paths.dist));
