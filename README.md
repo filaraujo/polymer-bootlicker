@@ -3,7 +3,7 @@
 ---
 
 #### thoughts
-* watch task for components, is it needed? whats the value? for minification?
+* should there be a useref-like directive for vulcanize/polybuild, whats the value?
 
 #### assumptions to document
 * components won't have html with nested js and css
