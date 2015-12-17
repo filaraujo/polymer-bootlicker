@@ -1,9 +1,9 @@
 import browserSync from 'browser-sync';
 import {paths} from '../tasks/paths.js';
 
-let server = browserSync.create();
+const server = browserSync.create();
 
-export function server() {
+export function serve() {
   server.init({
     server: {
       baseDir: paths.dist

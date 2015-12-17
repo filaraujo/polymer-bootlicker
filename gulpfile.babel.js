@@ -5,7 +5,7 @@ import {fonts} from './tasks/fonts';
 import {images} from './tasks/images';
 import {paths} from './tasks/paths';
 import {scripts} from './tasks/scripts';
-import {reload, server} from './tasks/server';
+import {reload, serve} from './tasks/server';
 import {styles} from './tasks/styles';
 
 function clean() {
@@ -21,7 +21,7 @@ function watch() {
   });
 }
 
-let serveAndWatch = gulp.parallel(server, watch);
+let serveAndWatch = gulp.parallel(serve, watch);
 let processAssets = gulp.parallel(fonts, images, scripts, styles);
 
 let build = gulp.series(

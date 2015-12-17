@@ -1,9 +1,12 @@
 import gulp from 'gulp';
+import lazypipe from 'lazypipe';
 import {paths} from '../tasks/paths.js';
 import useref from 'gulp-useref';
+import sourcemaps from 'gulp-sourcemaps';
 
-let indexPage = `${paths.app}/index.html`;
-let polybuildConfig = {maximumCrush: true};
+const indexPage = `${paths.app}/index.html`;
+const polybuildConfig = {maximumCrush: true};
+const userefConfig = {searchPath: paths.dist};
 
 function components() {
   return gulp.src(paths.components, {base: paths.app})
@@ -16,8 +19,11 @@ function pages() {
 }
 
 export function useReferences() {
+  let sourcemapPipe = lazypipe().pipe(sourcemaps.init, {loadMaps: true});
+
   return gulp.src(indexPage, {base: paths.app})
-    .pipe(useref())
+    .pipe(useref(userefConfig, sourcemapPipe))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.dist));
 }
 
