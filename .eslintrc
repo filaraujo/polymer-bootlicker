@@ -1,0 +1,12 @@
+{
+    "extends": "google",
+    "globals": {
+        "Polymer": true
+    },
+    "rules": {
+      "new-cap": [2, {
+        "capIsNewExceptions": ["Polymer"]
+        }
+      ]
+    }
+}

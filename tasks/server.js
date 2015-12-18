@@ -3,6 +3,9 @@ import {paths} from '../tasks/paths.js';
 
 const server = browserSync.create();
 
+/**
+ * starts up a serve instance
+ */
 export function serve() {
   server.init({
     server: {
@@ -11,6 +14,9 @@ export function serve() {
   });
 }
 
+/**
+ * reloads the server
+ */
 export function reload() {
   server.reload();
 }

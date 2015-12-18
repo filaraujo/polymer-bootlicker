@@ -3,6 +3,7 @@ import minifyCss from 'gulp-minify-css';
 import gulp from 'gulp';
 import {paths} from '../tasks/paths.js';
 import size from 'gulp-size';
+
 const autoprefixerConfig = [
   'ie >= 10',
   'ie_mob >= 10',
@@ -16,6 +17,10 @@ const autoprefixerConfig = [
 ];
 const minifyCssConfig = {};
 
+/**
+ * auto prefixes and minifies the css assets
+ * @return {obj} gulp
+ */
 export function styles() {
   return gulp.src(paths.styles, {base: paths.app})
     .pipe(autoprefixer(autoprefixerConfig))

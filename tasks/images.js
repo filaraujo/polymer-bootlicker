@@ -5,6 +5,10 @@ import size from 'gulp-size';
 
 const imageminConfig = {progressive: true, interlaced: true};
 
+/**
+ * moves and processes the scripts
+ * @return {obj} gulp
+ */
 export function images() {
   return gulp.src(paths.images)
     .pipe(imagemin(imageminConfig))

@@ -10,4 +10,4 @@ const paths = {
   styles: './app/**/*.css'
 };
 
-export { paths };
+export {paths};

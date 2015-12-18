@@ -27,11 +27,11 @@ Polymer({
       // prototype).
       value: function() {
         return {
-          name:  'Dimitri Glazkov',
-          image: 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg',
+          name: 'Dimitri Glazkov',
+          image: 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg'
         };
       }
-    },
+    }
   },
 
   // Element Lifecycle

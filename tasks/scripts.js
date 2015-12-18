@@ -1,8 +1,6 @@
 import babel from 'gulp-babel';
 import gulp from 'gulp';
-import jshint from 'gulp-jshint';
-import jscs from 'gulp-jscs';
-import jscsStylish from 'gulp-jscs-stylish';
+import eslint from 'gulp-eslint';
 import {paths} from '../tasks/paths.js';
 import sourcemaps from 'gulp-sourcemaps';
 import size from 'gulp-size';
@@ -12,13 +10,15 @@ const babelConfig = {presets: ['es2015']};
 const sourcemapsConfig = ['.', {}];
 const uglifyConfig = {preserveComments: 'some'};
 
+/**
+ * moves and processes the scripts
+ * @return {obj} gulp
+ */
 export function scripts() {
   return gulp.src(paths.scripts)
-    .pipe(jshint())
-    .pipe(jscs())
-    .pipe(jscsStylish.combineWithHintResults())
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'))
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
     .pipe(sourcemaps.init())
     .pipe(babel(babelConfig))
     .pipe(uglify(uglifyConfig))

@@ -3,16 +3,26 @@ import lazypipe from 'lazypipe';
 import {paths} from '../tasks/paths.js';
 import polybuild from 'polybuild';
 import useref from 'gulp-useref';
+import size from 'gulp-size';
 import sourcemaps from 'gulp-sourcemaps';
 
 const polybuildConfig = {maximumCrush: true, omitSuffix: true};
 const userefConfig = {searchPath: paths.dist};
 
+/**
+ * moves components
+ * @return {obj} gulp
+ */
 function components() {
   return gulp.src(paths.components, {base: paths.app})
+    .pipe(size({title: 'components'}))
     .pipe(gulp.dest(paths.dist));
 }
 
+/**
+ * moves bower assets
+ * @return {obj} gulp
+ */
 function bower() {
   let dest = `${paths.dist}/components`;
   let bowerAssets = `${paths.bower}**/*`;
@@ -21,11 +31,20 @@ function bower() {
     .pipe(gulp.dest(dest));
 }
 
+/**
+ * moves index pages
+ * @return {obj} gulp
+ */
 function pages() {
   return gulp.src(`${paths.app}/index.html`)
+    .pipe(size({title: 'pages'}))
     .pipe(gulp.dest(paths.dist));
 }
 
+/**
+ * concats references for scripts and css into a single minified reference
+ * @return {obj} gulp
+ */
 function userefs() {
   let sourcemapPipe = lazypipe().pipe(sourcemaps.init, {loadMaps: true});
 
@@ -35,6 +54,10 @@ function userefs() {
     .pipe(gulp.dest(paths.dist));
 }
 
+/**
+ * vulcanizes down the components into one asset
+ * @return {obj} gulp
+ */
 function polybuilds() {
   return gulp.src(`${paths.dist}/index.html`)
     .pipe(polybuild(polybuildConfig))
