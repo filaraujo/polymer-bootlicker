@@ -6,7 +6,7 @@ import useref from 'gulp-useref';
 import size from 'gulp-size';
 import sourcemaps from 'gulp-sourcemaps';
 
-const polybuildConfig = {maximumCrush: true, omitSuffix: true};
+const polybuildConfig = {maximumCrush: true, suffix: false};
 const userefConfig = {searchPath: paths.dist};
 
 /**
@@ -48,7 +48,7 @@ function pages() {
 function userefs() {
   let sourcemapPipe = lazypipe().pipe(sourcemaps.init, {loadMaps: true});
 
-  return gulp.src(`${paths.app}/index.html`)
+  return gulp.src(`${paths.dist}/index.html`)
     .pipe(useref(userefConfig, sourcemapPipe))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.dist));

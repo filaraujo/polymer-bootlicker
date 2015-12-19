@@ -25,6 +25,6 @@
     "gulp-useref": "^3.0.3",
     "jshint": "^2.8.0",
     "lazypipe": "^1.0.1",
-    "polybuild": "^1.0.5"
+    "polybuild": "^1.1.0"
   }
 }

@@ -10,6 +10,7 @@ import {styles} from './tasks/styles';
 
 /**
  * clean out dist folder
+ * @return {obj} deletion promise
  */
 function clean() {
   return del('./dist');
