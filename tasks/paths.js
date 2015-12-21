@@ -1,4 +1,4 @@
-const paths = {
+export const paths = {
   app: './app/',
   bower: './bower_components/',
   components: './app/components/**/*',
@@ -9,5 +9,3 @@ const paths = {
   scripts: './app/**/*.js',
   styles: './app/**/*.css'
 };
-
-export {paths};

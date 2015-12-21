@@ -7,6 +7,7 @@
  - [x] eslint
  - [ ] service workers
  - [ ] fingerprinting
+ - [ ] better way to do polybuild
 
 
 #### thoughts
