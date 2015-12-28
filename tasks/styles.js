@@ -1,5 +1,5 @@
 import autoprefixer from 'gulp-autoprefixer';
-import minifyCss from 'gulp-minify-css';
+import nano from 'gulp-cssnano';
 import gulp from 'gulp';
 import {paths} from '../tasks/paths.js';
 import size from 'gulp-size';
@@ -15,7 +15,7 @@ const autoprefixerConfig = [
   'android >= 4.4',
   'bb >= 10'
 ];
-const minifyCssConfig = {};
+const nanoConfig = {};
 
 /**
  * auto prefixes and minifies the css assets
@@ -24,7 +24,7 @@ const minifyCssConfig = {};
 export function styles() {
   return gulp.src(paths.styles, {base: paths.app})
     .pipe(autoprefixer(autoprefixerConfig))
-    .pipe(minifyCss(minifyCssConfig))
+    .pipe(nano(nanoConfig))
     .pipe(size({title: 'styles'}))
     .pipe(gulp.dest(paths.local));
 }
