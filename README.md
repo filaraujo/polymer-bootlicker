@@ -2,19 +2,35 @@
 
 ---
 
-# TODO
- - [ ] i18n
- - [x] eslint
- - [ ] service workers
- - [ ] fingerprinting
- - [ ] better way to do polybuild
- - [ ] figure out a way to prevent redundant `components` file copying
+# Feature Roadmap
+ - [x] Code Style & Linting
+ - [ ] Caching
+  - [ ] Fingerprinting
+  - [ ] Service Workers
+ - [ ] Internalization
+  - [x] Create localized folders
+  - [ ] Localize in local build
+  - [ ] Create only vulcanized asset bundles
+ - Polybuild
+  - [ ] Review having a `elements.html`
+  - [ ] Explore useref for polybuild
+ - Testing (WCT)
+  - [ ] Implement full test suite
+  - [ ] Implement single component
+ - Nice to Haves
+  - [ ] Optimize redundant file copying (components)
+  - [ ] Explore how to make this a package, not boilerplate
 
+---
 
-#### thoughts
-* should there be a useref-like directive for vulcanize/polybuild, whats the value?
-* watch should accept params and then default
+# Documentation Needed
+- [ ] Project Structure
+  - [ ] Components
+    - [ ] Embedded or inline js/css
+  - [ ] Assets
+  - [ ] Tests
+- [ ] Task Structure
+- [ ] i18N
+  - [ ] How to use, disable and run server with specific language
 
-#### assumptions to document
-* components won't have html with nested js and css
-* all assets in components are copies over, however only html assets are processed
+---
