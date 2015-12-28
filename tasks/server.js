@@ -3,7 +3,7 @@ import {paths} from '../tasks/paths.js';
 
 const server = browserSync.create();
 const serverLocalConfig = {server: {baseDir: paths.local}};
-const serverDistConfig = {server: {baseDir: paths.dist}};
+const serverDistConfig = {server: {baseDir: `${paths.dist}/en-US`}};
 
 let serverInit = config => {
   return function serve() {

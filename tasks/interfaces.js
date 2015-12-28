@@ -1,4 +1,5 @@
 import gulp from 'gulp';
+import i18n from 'gulp-i18n-localize';
 import lazypipe from 'lazypipe';
 import {paths} from '../tasks/paths.js';
 import polybuild from 'polybuild';
@@ -6,6 +7,7 @@ import useref from 'gulp-useref';
 import size from 'gulp-size';
 import sourcemaps from 'gulp-sourcemaps';
 
+const i18nConfig = {localeDir: paths.locales};
 const polybuildConfig = {maximumCrush: true, suffix: false};
 const userefConfig = {searchPath: paths.local};
 
@@ -51,7 +53,7 @@ function userefs() {
   return gulp.src(`${paths.local}/index.html`)
     .pipe(useref(userefConfig, sourcemapPipe))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.local));
 }
 
 /**
@@ -61,8 +63,18 @@ function userefs() {
 function polybuilds() {
   return gulp.src(`${paths.local}/index.html`)
     .pipe(polybuild(polybuildConfig))
+    .pipe(gulp.dest(paths.local));
+}
+
+/**
+ * translates assets files and moves them into localization folders
+ * @return {obj} gulp
+ */
+function translate() {
+  return gulp.src(`${paths.local}/**/*`, {base: paths.local})
+    .pipe(i18n(i18nConfig))
     .pipe(gulp.dest(paths.dist));
 }
 
 export let interfaces = gulp.parallel(bower, components, pages);
-export let optimizeHTML = gulp.series(userefs, polybuilds);
+export let optimizeHTML = gulp.series(userefs, polybuilds, translate);

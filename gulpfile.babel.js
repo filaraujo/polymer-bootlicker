@@ -53,12 +53,3 @@ gulp.task('default', buildDist);
 gulp.task('build', buildLocal);
 gulp.task('serve', serveLocal);
 gulp.task('serve:dist', serveDist);
-
-/**
-
-  dist
-    |- local
-    |- en-US
-    |- es-US
-
- */
