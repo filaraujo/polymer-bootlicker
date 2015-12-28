@@ -24,5 +24,5 @@ export function scripts() {
     .pipe(uglify(uglifyConfig))
     .pipe(sourcemaps.write(...sourcemapsConfig))
     .pipe(size({title: 'scripts'}))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.local));
 }

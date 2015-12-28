@@ -2,17 +2,14 @@ import browserSync from 'browser-sync';
 import {paths} from '../tasks/paths.js';
 
 const server = browserSync.create();
+const serverLocalConfig = {server: {baseDir: paths.local}};
+const serverDistConfig = {server: {baseDir: paths.dist}};
 
-/**
- * starts up a serve instance
- */
-export function serve() {
-  server.init({
-    server: {
-      baseDir: paths.dist
-    }
-  });
-}
+let serverInit = config => {
+  return function serve() {
+    server.init(config);
+  };
+};
 
 /**
  * reloads the server
@@ -20,3 +17,8 @@ export function serve() {
 export function reload() {
   server.reload();
 }
+
+export let serve = {
+  local: serverInit(serverLocalConfig),
+  dist: serverInit(serverDistConfig)
+};

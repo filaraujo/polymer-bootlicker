@@ -26,5 +26,5 @@ export function styles() {
     .pipe(autoprefixer(autoprefixerConfig))
     .pipe(minifyCss(minifyCssConfig))
     .pipe(size({title: 'styles'}))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.local));
 }

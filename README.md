@@ -8,6 +8,7 @@
  - [ ] service workers
  - [ ] fingerprinting
  - [ ] better way to do polybuild
+ - [ ] figure out a way to prevent redundant `components` file copying
 
 
 #### thoughts

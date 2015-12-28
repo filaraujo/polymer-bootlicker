@@ -7,7 +7,7 @@ import size from 'gulp-size';
 import sourcemaps from 'gulp-sourcemaps';
 
 const polybuildConfig = {maximumCrush: true, suffix: false};
-const userefConfig = {searchPath: paths.dist};
+const userefConfig = {searchPath: paths.local};
 
 /**
  * moves components
@@ -16,7 +16,7 @@ const userefConfig = {searchPath: paths.dist};
 function components() {
   return gulp.src(paths.components, {base: paths.app})
     .pipe(size({title: 'components'}))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.local));
 }
 
 /**
@@ -24,7 +24,7 @@ function components() {
  * @return {obj} gulp
  */
 function bower() {
-  let dest = `${paths.dist}/components`;
+  let dest = `${paths.local}/components`;
   let bowerAssets = `${paths.bower}**/*`;
 
   return gulp.src(bowerAssets, {base: paths.bower})
@@ -38,7 +38,7 @@ function bower() {
 function pages() {
   return gulp.src(`${paths.app}/index.html`)
     .pipe(size({title: 'pages'}))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.local));
 }
 
 /**
@@ -48,7 +48,7 @@ function pages() {
 function userefs() {
   let sourcemapPipe = lazypipe().pipe(sourcemaps.init, {loadMaps: true});
 
-  return gulp.src(`${paths.dist}/index.html`)
+  return gulp.src(`${paths.local}/index.html`)
     .pipe(useref(userefConfig, sourcemapPipe))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.dist));
@@ -59,7 +59,7 @@ function userefs() {
  * @return {obj} gulp
  */
 function polybuilds() {
-  return gulp.src(`${paths.dist}/index.html`)
+  return gulp.src(`${paths.local}/index.html`)
     .pipe(polybuild(polybuildConfig))
     .pipe(gulp.dest(paths.dist));
 }

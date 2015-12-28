@@ -13,5 +13,5 @@ export function images() {
   return gulp.src(paths.images)
     .pipe(imagemin(imageminConfig))
     .pipe(size({title: 'images'}))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.local));
 }

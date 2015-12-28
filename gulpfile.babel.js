@@ -41,15 +41,24 @@ let buildDist = gulp.series(
 
 let serveLocal = gulp.series(
   buildLocal,
-  gulp.parallel(serve, watch)
+  gulp.parallel(serve.local, watch)
 );
 
 let serveDist = gulp.series(
   buildDist,
-  serve
+  serve.dist
 );
 
 gulp.task('default', buildDist);
 gulp.task('build', buildLocal);
 gulp.task('serve', serveLocal);
 gulp.task('serve:dist', serveDist);
+
+/**
+
+  dist
+    |- local
+    |- en-US
+    |- es-US
+
+ */
