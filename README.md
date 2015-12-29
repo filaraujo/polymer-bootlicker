@@ -3,14 +3,19 @@
 ---
 
 # Feature Roadmap
- - [x] Code Style & Linting
- - [ ] Caching
-  - [ ] Fingerprinting
-  - [ ] Service Workers
- - [ ] Internalization
-  - [x] Create localized folders
-  - [ ] Localize in local build
+ - Code Quality
+  - [x] Lint
+  - [x] Code style
+ - Development Optimization
+  - [x] Scripts, styles, fonts, images watchers
+  - [ ] Html & components watchers
+ - Asset Caching & Optimization
   - [ ] Create only vulcanized asset bundles
+  - [ ] Fingerprinting
+  - [ ] Service workers
+ - Internalization
+  - [x] Create localized folders
+  - [x] i18n in local build
  - Polybuild
   - [ ] Review having a `elements.html`
   - [ ] Explore useref for polybuild
