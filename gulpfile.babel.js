@@ -2,6 +2,7 @@ import gulp from 'gulp';
 import del from 'del';
 import {interfaces, optimizeHTML} from './tasks/interfaces';
 import {fonts} from './tasks/fonts';
+import {translate} from './tasks/i18n';
 import {images} from './tasks/images';
 import {paths} from './tasks/paths';
 import {scripts} from './tasks/scripts';
@@ -24,29 +25,33 @@ function watch() {
   let watchableTasks = [fonts, images, scripts, styles];
 
   watchableTasks.forEach(task => {
-    gulp.watch(paths[task.name], gulp.series(task, reload));
+    gulp.watch(paths[task.name], gulp.series(task, translate, reload));
   });
 }
 
 let buildLocal = gulp.series(
   clean,
   interfaces,
-  gulp.parallel(fonts, images, scripts, styles)
+  gulp.parallel(fonts, images, scripts, styles),
+  translate
 );
 
 let buildDist = gulp.series(
-  buildLocal,
-  optimizeHTML
+  clean,
+  interfaces,
+  gulp.parallel(fonts, images, scripts, styles),
+  optimizeHTML,
+  translate
 );
 
 let serveLocal = gulp.series(
   buildLocal,
-  gulp.parallel(serve.local, watch)
+  gulp.parallel(serve, watch)
 );
 
 let serveDist = gulp.series(
   buildDist,
-  serve.dist
+  serve
 );
 
 gulp.task('default', buildDist);
