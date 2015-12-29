@@ -10,14 +10,14 @@
   - [x] Scripts, styles, fonts, images watchers
   - [x] Html & components watchers
  - Asset Caching & Optimization
-  - [ ] Create only vulcanized asset bundles
+  - [x] Create only vulcanized asset bundles
   - [ ] Fingerprinting
   - [ ] Service workers
  - Internalization
   - [x] Create localized folders
   - [x] i18n in local build
  - Polybuild
-  - [ ] Review having a `elements.html`
+  - [x] Review having a `elements.html`
   - [ ] Explore useref for polybuild
  - Testing (WCT)
   - [ ] Implement full test suite

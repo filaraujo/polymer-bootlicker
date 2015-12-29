@@ -59,9 +59,9 @@ function userefs() {
  * @return {obj} gulp
  */
 function polybuilds() {
-  return gulp.src(`${paths.local}/index.html`)
+  return gulp.src(`${paths.local}/components/elements.html`)
     .pipe(polybuild(polybuildConfig))
-    .pipe(gulp.dest(paths.local));
+    .pipe(gulp.dest(`${paths.local}/components`));
 }
 
 export let html = [bower, components, pages];
