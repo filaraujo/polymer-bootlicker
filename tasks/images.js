@@ -3,7 +3,7 @@ import imagemin from 'gulp-imagemin';
 import {paths} from '../tasks/paths.js';
 import size from 'gulp-size';
 
-const imageminConfig = {progressive: true, interlaced: true};
+const imageminConfig = {interlaced: true, progressive: true};
 
 /**
  * moves and processes the scripts
