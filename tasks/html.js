@@ -24,8 +24,8 @@ function components() {
  * @return {obj} gulp
  */
 function bower() {
-  let dest = `${paths.local}/components`;
   let bowerAssets = `${paths.bower}**/*`;
+  let dest = `${paths.local}/components`;
 
   return gulp.src(bowerAssets, {base: paths.bower})
     .pipe(gulp.dest(dest));
@@ -64,5 +64,5 @@ function polybuilds() {
     .pipe(gulp.dest(paths.local));
 }
 
-export let interfaces = gulp.parallel(bower, components, pages);
-export let optimizeHTML = gulp.series(userefs, polybuilds);
+export let html = [bower, components, pages];
+export let optimize = [userefs, polybuilds];

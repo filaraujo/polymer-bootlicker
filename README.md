@@ -8,7 +8,7 @@
   - [x] Code style
  - Development Optimization
   - [x] Scripts, styles, fonts, images watchers
-  - [ ] Html & components watchers
+  - [x] Html & components watchers
  - Asset Caching & Optimization
   - [ ] Create only vulcanized asset bundles
   - [ ] Fingerprinting

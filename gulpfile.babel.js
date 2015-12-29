@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import del from 'del';
-import {interfaces, optimizeHTML} from './tasks/interfaces';
+import {html, optimize} from './tasks/html';
 import {fonts} from './tasks/fonts';
 import {translate} from './tasks/i18n';
 import {images} from './tasks/images';
@@ -17,44 +17,30 @@ function clean() {
   return del('./dist');
 }
 
+const assets = [fonts, images, scripts, styles];
+const copyAssets = [
+  clean,
+  gulp.parallel(...html),
+  gulp.parallel(...assets)
+];
+const buildDist = [
+  ...copyAssets,
+  gulp.series(...optimize),
+  translate
+];
+
 /**
- * watch for font, images, scripts and styles changes
- * then reprocess and reload
+ * watch for asset and html changes then reprocess and reload
  */
 function watch() {
-  let watchableTasks = [fonts, images, scripts, styles];
+  let watchableTasks = [...assets, ...html];
 
   watchableTasks.forEach(task => {
     gulp.watch(paths[task.name], gulp.series(task, translate, reload));
   });
 }
 
-let buildLocal = gulp.series(
-  clean,
-  interfaces,
-  gulp.parallel(fonts, images, scripts, styles),
-  translate
-);
-
-let buildDist = gulp.series(
-  clean,
-  interfaces,
-  gulp.parallel(fonts, images, scripts, styles),
-  optimizeHTML,
-  translate
-);
-
-let serveLocal = gulp.series(
-  buildLocal,
-  gulp.parallel(serve, watch)
-);
-
-let serveDist = gulp.series(
-  buildDist,
-  serve
-);
-
-gulp.task('default', buildDist);
-gulp.task('build', buildLocal);
-gulp.task('serve', serveLocal);
-gulp.task('serve:dist', serveDist);
+gulp.task('build', gulp.series(...copyAssets, translate));
+gulp.task('build:dist', gulp.series(...buildDist));
+gulp.task('serve', gulp.series(...copyAssets, gulp.parallel(serve, watch)));
+gulp.task('serve:dist', gulp.series(...buildDist, serve));

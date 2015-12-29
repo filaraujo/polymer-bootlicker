@@ -7,6 +7,7 @@ export const paths = {
   images: './app/**/*.{png,jpg,jpeg,gif}',
   local: './dist/local',
   locales: './locales',
+  pages: './app/index.html',
   src: './src',
   scripts: './app/**/*.js',
   styles: './app/**/*.css',
