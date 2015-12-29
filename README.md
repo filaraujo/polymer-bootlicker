@@ -16,6 +16,7 @@
  - Internalization
   - [x] Create localized folders
   - [x] i18n in local build
+  - [ ] Single index.html file, with js to switch correct language
  - Polybuild
   - [x] Review having a `elements.html`
   - [ ] Explore useref for polybuild
