@@ -1,4 +1,5 @@
 import gulp from 'gulp';
+import htmlmin from 'gulp-htmlmin';
 import lazypipe from 'lazypipe';
 import {paths} from '../tasks/paths.js';
 import polybuild from 'polybuild';
@@ -6,6 +7,7 @@ import useref from 'gulp-useref';
 import size from 'gulp-size';
 import sourcemaps from 'gulp-sourcemaps';
 
+const htmlminConfig = {empty: true, quotes: true, spare: true};
 const polybuildConfig = {maximumCrush: true, suffix: false};
 const userefConfig = {searchPath: paths.local};
 
@@ -50,6 +52,7 @@ function userefs() {
 
   return gulp.src(`${paths.local}/index.html`)
     .pipe(useref(userefConfig, sourcemapPipe))
+    .pipe(htmlmin(htmlminConfig))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.local));
 }
