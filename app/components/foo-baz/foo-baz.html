@@ -14,20 +14,14 @@ Example:
     </foo-baz>
 
 @demo demo/index.html
-@hero hero.svg
 -->
 
 <dom-module id="foo-baz">
   <link rel="import" type="css" href="foo-baz.css">
 
   <template>
-    <h1>&lt;foo-baz&gt;</h1>
+    <h1>foo-baz: ${{ foo.baz }}$</h1>
     <content></content>
-    <p class="author">
-      <img src$="{{author.image}}">
-      Cheers,<br/>
-      <span class="name">{{author.name}}</span>
-    </p>
   </template>
 
   <script src="foo-baz.js"></script>

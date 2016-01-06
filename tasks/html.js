@@ -25,8 +25,8 @@ function components() {
  * moves bower assets
  * @return {obj} gulp
  */
-function bower() {
-  let bowerAssets = `${paths.bower}**/*`;
+export function bower() {
+  let bowerAssets = [`${paths.bower}/**/*`, `!${paths.bower}/**/test/*`];
   let dest = `${paths.local}/components`;
 
   return gulp.src(bowerAssets, {base: paths.bower})

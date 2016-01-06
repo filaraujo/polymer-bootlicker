@@ -1,6 +1,6 @@
 export const paths = {
   app: './app/',
-  bower: './bower_components/',
+  bower: './bower_components',
   components: './app/components/**/*',
   dist: './dist',
   fonts: './app/fonts/**/*',
@@ -11,5 +11,6 @@ export const paths = {
   src: './src',
   scripts: './app/**/*.js',
   styles: './app/**/*.css',
+  tests: './test',
   tmp: './tmp'
 };

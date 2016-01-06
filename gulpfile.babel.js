@@ -8,13 +8,14 @@ import {paths} from './tasks/paths';
 import {scripts} from './tasks/scripts';
 import {reload, serve} from './tasks/server';
 import {styles} from './tasks/styles';
+import {tests} from './tasks/tests';
 
 /**
  * clean out dist folder
  * @return {obj} deletion promise
  */
 function clean() {
-  return del('./dist');
+  return del(['./dist', './tests']);
 }
 
 const assets = [fonts, images, scripts, styles];
@@ -44,3 +45,5 @@ gulp.task('build', gulp.series(...copyAssets, translate));
 gulp.task('build:dist', gulp.series(...buildDist));
 gulp.task('serve', gulp.series(...copyAssets, gulp.parallel(serve, watch)));
 gulp.task('serve:dist', gulp.series(...buildDist, serve));
+gulp.task('test:local', gulp.series('build', ...tests.local));
+gulp.task('test:remote', gulp.series('build', ...tests.remote));
