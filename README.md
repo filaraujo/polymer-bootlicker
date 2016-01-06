@@ -21,7 +21,7 @@
   - [x] Review having a `elements.html`
   - [ ] Explore useref for polybuild
  - Testing (WCT)
-  - [ ] Implement full test suite
+  - [x] Implement full test suite
   - [ ] Implement single component
  - Nice to Haves
   - [ ] Optimize redundant file copying (components)

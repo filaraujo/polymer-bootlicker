@@ -3,8 +3,7 @@ import {paths} from '../tasks/paths.js';
 import wct from 'web-component-tester';
 
 const wctConfig = {
-  persistent: true,
-  suites: [`${paths.tests}/**/tests/*.html`]
+  suites: [`${paths.tests}/**/tests/index.html`]
 };
 const wctLocalConfig = {local: {}};
 const wctSauceConfig = {sauce: {}};
