@@ -24,6 +24,6 @@ test('set default paths config', t => {
 
 test('accepts local configuration', t => {
   let fontPath = './app/fontz';
-  let bootlicker = new Bootlicker({paths: {fontDir: fontPath}});
-  t.is(bootlicker.config.paths.fontDir, fontPath);
+  let bootlicker = new Bootlicker({paths: {font: fontPath}});
+  t.is(bootlicker.config.paths.font, fontPath);
 });

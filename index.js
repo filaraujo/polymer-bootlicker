@@ -3,11 +3,13 @@ import Registry from 'undertaker-registry';
 import FooRegistry from './registries/font';
 import FazRegistry from './registries/faz';
 
-let paths = {
-  fontsDir: './app/fonts'
+const paths = {
+  app: './app/',
+  fonts: './app/fonts/**/*',
+  local: './dist/local'
 };
 
-let defaultConfig = {
+const defaultConfig = {
   paths: paths
 };
 

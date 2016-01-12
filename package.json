@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "ava test/**/*.js --verbose --require babel-register"
+    "test": "ava test/**/* --verbose --require babel-register"
   },
   "author": "Filipe Araujo <filipe.alves.araujo@gmail.com>",
   "license": "ISC",

@@ -1,5 +1,6 @@
 import util from 'util';
 import Registry from 'undertaker-registry';
+import size from 'gulp-size';
 
 /**
  * font registry constructor
@@ -10,8 +11,22 @@ function FontRegistry(config) {
   this.config = config;
 
   this.init = taker => {
-    console.log('foo registered with', this.config);
-    taker.task('foo', function() {});
+    this.taker = taker;
+    taker.task('font', this.font);
+  };
+
+  /**
+   * copy fonts
+   * @return {object} taker object
+   */
+  this.font = () => {
+    let paths = this.config.paths;
+    let taker = this.taker;
+
+    return taker.src(paths.fonts, {base: paths.app})
+      .pipe(require('gulp-debug')())
+      .pipe(size({title: 'fonts'}))
+      .pipe(taker.dest(paths.local));
   };
 }
 
