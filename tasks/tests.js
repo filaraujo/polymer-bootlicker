@@ -22,14 +22,14 @@ function moveTests() {
  * @return {obj} gulp
  */
 function runLocalTests() {
-  return wct.test(Object.assign(wctLocalConfig, wctConfig));
+  return wct.test(Object.assign({}, wctLocalConfig, wctConfig));
 }
 
 /**
  * runs tests on saucelabs
  */
 function runSauceTests() {
-  wct.test(Object.assign(wctSauceConfig, wctConfig));
+  wct.test(Object.assign({}, wctSauceConfig, wctConfig));
 }
 
 export let tests = {
