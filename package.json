@@ -28,6 +28,7 @@
     "gulp-useref": "^3.0.3",
     "lazypipe": "^1.0.1",
     "polybuild": "^1.1.0",
+    "sinon": "^1.17.2",
     "web-component-tester": "^4.0.3"
   },
   "dependencies": {

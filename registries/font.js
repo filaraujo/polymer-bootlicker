@@ -24,7 +24,6 @@ function FontRegistry(config) {
     let taker = this.taker;
 
     return taker.src(paths.fonts, {base: paths.app})
-      .pipe(require('gulp-debug')())
       .pipe(size({title: 'fonts'}))
       .pipe(taker.dest(paths.local));
   };
