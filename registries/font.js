@@ -7,8 +7,9 @@ import size from 'gulp-size';
  * @param {object} config configuration object
  */
 function FontRegistry(config) {
+  const {paths} = config;
+
   Registry.call(this);
-  this.config = config;
 
   this.init = taker => {
     this.taker = taker;
@@ -20,8 +21,7 @@ function FontRegistry(config) {
    * @return {object} taker object
    */
   this.font = () => {
-    let paths = this.config.paths;
-    let taker = this.taker;
+    let {taker} = this;
 
     return taker.src(paths.fonts, {base: paths.app})
       .pipe(size({title: 'fonts'}))

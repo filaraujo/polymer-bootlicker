@@ -3,7 +3,7 @@ import Undertaker from 'undertaker';
 import FontRegistry from '../registries/font';
 import sinon from 'sinon';
 
-let config = {paths: {app: './', fonts: './fonts', local: './dist/local'}};
+let config = {paths: {app: './', fonts: './fontz', local: './dist/local'}};
 
 let destSpy = sinon.spy(() => {
   return Promise.resolve();
@@ -25,12 +25,6 @@ test('exports a registry', t => {
   t.ok(font._tasks);
 });
 
-test('accepts a configuration', t => {
-  let config = {foo: 'bar'};
-  let font = new FontRegistry(config);
-  t.ok(font.config.foo);
-});
-
 test.beforeEach(t => {
   let taker = t.context.taker = new Undertaker();
   taker.registry(new FontRegistry(config));
@@ -43,7 +37,7 @@ test('registers a font task', t => {
   t.ok(taker.task('font'));
 });
 
-test.cb('sets the source and base', t => {
+test.cb('sets the source and base form the configuration', t => {
   let taker = t.context.taker;
 
   taker.series('font')(() => {

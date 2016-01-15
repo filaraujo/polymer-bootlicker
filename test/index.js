@@ -19,7 +19,11 @@ test('accepts a configuration', t => {
 
 test('set default paths config', t => {
   let bootlicker = new Bootlicker({});
-  t.ok(bootlicker.config.paths);
+  let {paths} = bootlicker.config;
+  t.ok(paths);
+  t.is(paths.app, './app');
+  t.is(paths.fonts, './app/fonts/**/*');
+  t.is(paths.local, './dist/local');
 });
 
 test('accepts local configuration', t => {

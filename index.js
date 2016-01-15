@@ -3,7 +3,7 @@ import Registry from 'undertaker-registry';
 import FontRegistry from './registries/font';
 
 const paths = {
-  app: './app/',
+  app: './app',
   fonts: './app/fonts/**/*',
   local: './dist/local'
 };
