@@ -3,7 +3,14 @@ import Undertaker from 'undertaker';
 import FontRegistry from '../registries/font';
 import sinon from 'sinon';
 
-let config = {paths: {app: './', fonts: './fontz', local: './dist/local'}};
+let config = {
+  paths: {
+    app: './',
+    dist: './dist',
+    fonts: './fontz/**/*',
+    local: './dist/local'
+  }
+};
 
 let destSpy = sinon.spy(() => {
   return Promise.resolve();
@@ -21,7 +28,7 @@ test('exports a function', t => {
 
 test('throws if not configured with paths', t => {
   let func = function() {
-    new FontRegistry({});
+    new FontRegistry();
   };
 
   t.throws(func);

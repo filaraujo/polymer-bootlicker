@@ -1,29 +1,36 @@
 import util from 'util';
 import Registry from 'undertaker-registry';
 import FontRegistry from './registries/font';
+import I18nRegistry from './registries/i18n';
 
-const paths = {
-  app: './app',
-  fonts: './app/fonts/**/*',
-  local: './dist/local',
-  locales: './locales'
+const defaults = {
+  paths: {
+    app: './app',
+    dist: './dist',
+    fonts: './app/fonts/**/*',
+    local: './dist/local',
+    locales: './locales'
+  }
 };
 
-const defaultConfig = {
-  paths: paths
-};
+const registries = [
+  FontRegistry,
+  I18nRegistry
+];
 
 /**
  * Bootlicker registry constructor
  * @param {object} config configuration object
  */
 function Bootlicker(config) {
-  this._config = Object.assign({}, defaultConfig, config);
+  this._config = Object.assign({}, defaults, config);
 
   Registry.call(this);
 
   this.init = taker => {
-    taker.registry(new FontRegistry(this._config));
+    registries.forEach(Registry => {
+      taker.registry(new Registry(this._config));
+    }, this);
   };
 }
 

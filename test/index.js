@@ -38,4 +38,5 @@ test('adds default registries tasks', t => {
   let taker = new Undertaker();
   taker.registry(new Bootlicker({}));
   t.ok(taker.task('font'));
+  t.ok(taker.task('i18n'));
 });

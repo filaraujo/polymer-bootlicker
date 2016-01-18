@@ -6,7 +6,7 @@ import size from 'gulp-size';
  * font registry constructor
  * @param {object} config configuration object
  */
-function FontRegistry(config) {
+function FontRegistry(config = {}) {
   const {paths} = config;
 
   // check paths
