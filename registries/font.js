@@ -9,8 +9,17 @@ import size from 'gulp-size';
 function FontRegistry(config) {
   const {paths} = config;
 
+  // check paths
+  if (!paths || !paths.fonts) {
+    throw new Error('FontRegistry: paths not defined');
+  }
+
   Registry.call(this);
 
+  /**
+   * init registry
+   * @param {object} taker undertaker object
+   */
   this.init = taker => {
     this.taker = taker;
     taker.task('font', this.font);

@@ -19,8 +19,16 @@ test('exports a function', t => {
   t.true(typeof FontRegistry === 'function');
 });
 
+test('throws if not configured with paths', t => {
+  let func = function() {
+    new FontRegistry({});
+  };
+
+  t.throws(func);
+});
+
 test('exports a registry', t => {
-  let font = new FontRegistry({});
+  let font = new FontRegistry(config);
   t.ok(font.init);
   t.ok(font._tasks);
 });
