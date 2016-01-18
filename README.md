@@ -1,5 +1,5 @@
 # Polymer BootLicker
-![Build Status](https://api.travis-ci.org/filaraujo/polymer-bootlicker.svg)
+[![Build Status](https://api.travis-ci.org/filaraujo/polymer-bootlicker.svg)](https://travis-ci.org/filaraujo/polymer-bootlicker)
 
 ---
 
