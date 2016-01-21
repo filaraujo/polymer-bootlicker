@@ -3,6 +3,7 @@ import Registry from 'undertaker-registry';
 import FontRegistry from './registries/font';
 import I18nRegistry from './registries/i18n';
 import ImageRegistry from './registries/image';
+import ServerRegistry from './registries/server';
 import StyleRegistry from './registries/style';
 
 const defaults = {
@@ -21,6 +22,7 @@ const registries = [
   FontRegistry,
   I18nRegistry,
   ImageRegistry,
+  ServerRegistry,
   StyleRegistry
 ];
 
