@@ -3,6 +3,7 @@ import Registry from 'undertaker-registry';
 import FontRegistry from './registries/font';
 import I18nRegistry from './registries/i18n';
 import ImageRegistry from './registries/image';
+import ScriptRegistry from './registries/script';
 import ServerRegistry from './registries/server';
 import StyleRegistry from './registries/style';
 
@@ -14,6 +15,7 @@ const defaults = {
     images: './app/**/*.{png,jpg,jpeg,gif}',
     local: './dist/local',
     locales: './locales',
+    scripts: './app/**/*.js',
     styles: './app/**/*.css'
   }
 };
@@ -22,6 +24,7 @@ const registries = [
   FontRegistry,
   I18nRegistry,
   ImageRegistry,
+  ScriptRegistry,
   ServerRegistry,
   StyleRegistry
 ];

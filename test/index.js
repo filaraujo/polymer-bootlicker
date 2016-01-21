@@ -45,6 +45,7 @@ test('adds default registries tasks', t => {
   t.ok(taker.task('i18n'));
   t.ok(taker.task('image'));
   t.ok(taker.task('reload'));
+  t.ok(taker.task('script'));
   t.ok(taker.task('serve'));
   t.ok(taker.task('style'));
 });
