@@ -23,9 +23,13 @@ test('set default paths config', t => {
   let {paths} = bootlicker._config;
   t.ok(paths);
   t.is(paths.app, './app');
+  t.is(paths.dist, './dist');
   t.is(paths.fonts, './app/fonts/**/*');
+  t.is(paths.images, './app/**/*.{png,jpg,jpeg,gif}');
   t.is(paths.local, './dist/local');
   t.is(paths.locales, './locales');
+  t.is(paths.scripts, './app/**/*.js');
+  t.is(paths.styles, './app/**/*.css');
 });
 
 test('accepts local configuration', t => {
@@ -40,6 +44,7 @@ test('adds default registries tasks', t => {
   t.ok(taker.task('font'));
   t.ok(taker.task('i18n'));
   t.ok(taker.task('image'));
+  t.ok(taker.task('reload'));
   t.ok(taker.task('serve'));
   t.ok(taker.task('style'));
 });
