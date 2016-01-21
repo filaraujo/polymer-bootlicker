@@ -26,10 +26,7 @@ test('exports a function', t => {
 });
 
 test('throws if not configured with paths', t => {
-  let func = function() {
-    new I18nRegistry({});
-  };
-
+  let func = () => new I18nRegistry();
   t.throws(func);
 });
 
@@ -45,10 +42,7 @@ test.beforeEach(t => {
   taker.dest = destSpy;
   taker.src = srcSpy;
 
-  taker.on('error', function() {
-    console.log(arguments);
-
-  });
+  taker.on('error', console.log);
 });
 
 test('registers a font task', t => {

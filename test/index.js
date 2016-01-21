@@ -39,4 +39,5 @@ test('adds default registries tasks', t => {
   taker.registry(new Bootlicker({}));
   t.ok(taker.task('font'));
   t.ok(taker.task('i18n'));
+  t.ok(taker.task('image'));
 });
