@@ -46,7 +46,7 @@ test.beforeEach(t => {
   taker.on('error', console.log);
 });
 
-test('registers a font task', t => {
+test('registers a image task', t => {
   let taker = t.context.taker;
   t.ok(taker.task('image'));
 });
@@ -68,3 +68,6 @@ test.cb('moves into dest folder', t => {
     t.end();
   });
 });
+
+
+// figure out how to test image processes

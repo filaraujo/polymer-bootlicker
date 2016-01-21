@@ -45,7 +45,7 @@ test.beforeEach(t => {
   taker.on('error', console.log);
 });
 
-test('registers a font task', t => {
+test('registers a i18n task', t => {
   let taker = t.context.taker;
   t.ok(taker.task('i18n'));
 });
@@ -72,3 +72,5 @@ test('registers a font task', t => {
 //     t.end();
 //   });
 // });
+
+// figure out how to test i18n processes
