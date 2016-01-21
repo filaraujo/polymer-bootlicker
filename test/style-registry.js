@@ -1,13 +1,13 @@
 import test from 'ava';
 import Undertaker from 'undertaker';
-import FontRegistry from '../registries/font';
+import StyleRegistry from '../registries/style';
 import sinon from 'sinon';
 
 let config = {
   paths: {
     app: './',
     dist: './dist',
-    fonts: './fontz/**/*',
+    styles: './app/**/*.css',
     local: './dist/local'
   }
 };
@@ -23,23 +23,23 @@ let srcSpy = sinon.spy(() => {
 });
 
 test('exports a function', t => {
-  t.true(typeof FontRegistry === 'function');
+  t.true(typeof StyleRegistry === 'function');
 });
 
 test('throws if not configured with paths', t => {
-  let func = () => new FontRegistry();
+  let func = () => new StyleRegistry();
   t.throws(func);
 });
 
 test('exports a registry', t => {
-  let registry = new FontRegistry(config);
+  let registry = new StyleRegistry(config);
   t.ok(registry.init);
   t.ok(registry._tasks);
 });
 
 test.beforeEach(t => {
   let taker = t.context.taker = new Undertaker();
-  taker.registry(new FontRegistry(config));
+  taker.registry(new StyleRegistry(config));
   taker.dest = destSpy;
   taker.src = srcSpy;
 
@@ -48,15 +48,15 @@ test.beforeEach(t => {
 
 test('registers a font task', t => {
   let taker = t.context.taker;
-  t.ok(taker.task('font'));
+  t.ok(taker.task('style'));
 });
 
 test.cb('sets the source and base form the configuration', t => {
   let taker = t.context.taker;
 
-  taker.series('font')(() => {
+  taker.series('style')(() => {
     t.ok(srcSpy.firstCall.calledWith(
-      config.paths.fonts,
+      config.paths.styles,
       {base: config.paths.app}
     ));
     t.end();
@@ -66,7 +66,7 @@ test.cb('sets the source and base form the configuration', t => {
 test.cb('moves into dest folder', t => {
   let taker = t.context.taker;
 
-  taker.series('font')(() => {
+  taker.series('style')(() => {
     t.ok(destSpy.firstCall.calledWith(config.paths.local));
     t.end();
   });

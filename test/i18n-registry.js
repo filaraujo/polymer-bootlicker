@@ -31,9 +31,9 @@ test('throws if not configured with paths', t => {
 });
 
 test('exports a registry', t => {
-  let i18n = new I18nRegistry(config);
-  t.ok(i18n.init);
-  t.ok(i18n._tasks);
+  let registry = new I18nRegistry(config);
+  t.ok(registry.init);
+  t.ok(registry._tasks);
 });
 
 test.beforeEach(t => {

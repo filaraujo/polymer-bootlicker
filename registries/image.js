@@ -29,7 +29,7 @@ function ImageRegistry(config = {}) {
   };
 
   /**
-   * copy fonts
+   * copy images
    * @return {object} taker object
    */
   this.image = () => {

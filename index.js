@@ -3,6 +3,7 @@ import Registry from 'undertaker-registry';
 import FontRegistry from './registries/font';
 import I18nRegistry from './registries/i18n';
 import ImageRegistry from './registries/image';
+import StyleRegistry from './registries/style';
 
 const defaults = {
   paths: {
@@ -11,14 +12,16 @@ const defaults = {
     fonts: './app/fonts/**/*',
     images: './app/**/*.{png,jpg,jpeg,gif}',
     local: './dist/local',
-    locales: './locales'
+    locales: './locales',
+    styles: './app/**/*.css'
   }
 };
 
 const registries = [
   FontRegistry,
   I18nRegistry,
-  ImageRegistry
+  ImageRegistry,
+  StyleRegistry
 ];
 
 /**

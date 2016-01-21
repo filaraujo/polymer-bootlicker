@@ -32,9 +32,9 @@ test('throws if not configured with paths', t => {
 });
 
 test('exports a registry', t => {
-  let image = new ImageRegistry(config);
-  t.ok(image.init);
-  t.ok(image._tasks);
+  let registry = new ImageRegistry(config);
+  t.ok(registry.init);
+  t.ok(registry._tasks);
 });
 
 test.beforeEach(t => {
