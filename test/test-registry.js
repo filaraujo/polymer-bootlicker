@@ -15,6 +15,8 @@ let destSpy = sinon.spy(() => {
   return Promise.resolve();
 });
 
+let noop = () => () => Promise.resolve();
+
 let srcSpy = sinon.spy(() => {
   var promise = Promise.resolve();
   promise.pipe = srcSpy;
@@ -38,6 +40,8 @@ test('exports a registry', t => {
 
 test.beforeEach(t => {
   let taker = t.context.taker = new Undertaker();
+  t.context.seriesSpy = sinon.stub(taker, 'series', noop);
+
   taker.registry(new TestRegistry(config));
   taker.dest = destSpy;
   taker.src = srcSpy;
@@ -47,15 +51,15 @@ test.beforeEach(t => {
 
 test('registers a test task', t => {
   let taker = t.context.taker;
-  t.ok(taker.task('test:move'));
+  t.ok(taker.task('test:copy'));
   t.ok(taker.task('test:local'));
   t.ok(taker.task('test:remote'));
 });
 
-test.cb('#test:move sets the source and base from the configuration', t => {
+test.cb('#test:copy sets the source and base from the configuration', t => {
   let taker = t.context.taker;
 
-  taker.series('test:move')(() => {
+  taker.parallel('test:copy')(() => {
     t.ok(srcSpy.firstCall.calledWith(
       `${config.paths.local}/components/**/*`
     ));
@@ -63,11 +67,22 @@ test.cb('#test:move sets the source and base from the configuration', t => {
   });
 });
 
-// test.cb('moves into dest folder', t => {
-//   let taker = t.context.taker;
-//
-//   taker.series('test:remote')(() => {
-//     t.ok(destSpy.firstCall.calledWith(config.paths.local));
-//     t.end();
-//   });
-// });
+test.cb('#test:local runs `test:move` and tests locally in a series', t => {
+  let taker = t.context.taker;
+  let {copy, local} = taker._registry;
+
+  taker.parallel('test:local')(() => {
+    t.true(t.context.seriesSpy.calledWith(copy, local));
+    t.end();
+  });
+});
+
+test.cb('#test:remote runs `test:move` and tests remotely in a series', t => {
+  let taker = t.context.taker;
+  let {copy, remote} = taker._registry;
+
+  taker.parallel('test:remote')(() => {
+    t.true(t.context.seriesSpy.calledWith(copy, remote));
+    t.end();
+  });
+});

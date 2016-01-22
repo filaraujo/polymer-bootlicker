@@ -28,20 +28,17 @@ function TestRegistry(config = {}) {
    */
   this.init = taker => {
     this.taker = taker;
-    taker.task('test:move', this.moveTests);
-    taker.task('test:local',
-      taker.series('test:move', this.testLocal)
-    );
-    taker.task('test:remote',
-      taker.series('test:move', this.testRemote)
-    );
+
+    taker.task('test:copy', this.copy);
+    taker.task('test:local', taker.series(this.copy, this.local));
+    taker.task('test:remote', taker.series(this.copy, this.remote));
   };
 
   /**
-   * move components to test directory
+   * copy components to test directory
    * @return {object} taker undertaker object
    */
-  this.moveTests = () => {
+  this.copy = () => {
     let {taker} = this;
 
     return taker.src(`${paths.local}/components/**/*`)
@@ -52,7 +49,7 @@ function TestRegistry(config = {}) {
    * test locally
    * @return {object} wct object
    */
-  this.testLocal = () => {
+  this.local = () => {
     return wct.test(Object.assign({}, wctLocalConfig, wctConfig));
   };
 
@@ -60,7 +57,7 @@ function TestRegistry(config = {}) {
    * test remotely
    * @return {object} wct object
    */
-  this.testRemote = () => {
+  this.remote = () => {
     return wct.test(Object.assign({}, wctSauceConfig, wctConfig));
   };
 }
