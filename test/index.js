@@ -48,4 +48,6 @@ test('adds default registries tasks', t => {
   t.ok(taker.task('script'));
   t.ok(taker.task('serve'));
   t.ok(taker.task('style'));
+  t.ok(taker.task('test:local'));
+  t.ok(taker.task('test:remote'));
 });

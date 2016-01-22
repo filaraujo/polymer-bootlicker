@@ -6,6 +6,7 @@ import ImageRegistry from './registries/image';
 import ScriptRegistry from './registries/script';
 import ServerRegistry from './registries/server';
 import StyleRegistry from './registries/style';
+import TestRegistry from './registries/test';
 
 const defaults = {
   paths: {
@@ -16,7 +17,8 @@ const defaults = {
     local: './dist/local',
     locales: './locales',
     scripts: './app/**/*.js',
-    styles: './app/**/*.css'
+    styles: './app/**/*.css',
+    tests: './test'
   }
 };
 
@@ -26,7 +28,8 @@ const registries = [
   ImageRegistry,
   ScriptRegistry,
   ServerRegistry,
-  StyleRegistry
+  StyleRegistry,
+  TestRegistry
 ];
 
 /**
