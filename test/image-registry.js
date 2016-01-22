@@ -5,10 +5,9 @@ import sinon from 'sinon';
 
 let config = {
   paths: {
-    app: './',
-    dist: './dist',
-    images: './app/**/*.{png,jpg,jpeg,gif}',
-    local: './dist/local'
+    app: './application',
+    local: './build/local',
+    images: './app/images/**/*.{png,jpg,jpeg,gif}'
   }
 };
 

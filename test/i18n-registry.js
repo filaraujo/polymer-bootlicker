@@ -5,9 +5,9 @@ import sinon from 'sinon';
 
 let config = {
   paths: {
-    app: './',
-    locales: './localez',
-    local: './dist/local'
+    app: './application',
+    dist: './build',
+    locales: './localizations'
   }
 };
 

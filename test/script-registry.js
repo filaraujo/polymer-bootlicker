@@ -5,14 +5,11 @@ import sinon from 'sinon';
 
 let config = {
   paths: {
-    app: './',
-    dist: './dist',
-    local: './dist/local',
-    scripts: './app/**/*.js'
+    app: './application',
+    local: './build/local',
+    scripts: './application/scripts/**/*.js'
   }
 };
-
-console.log('fix these test config');
 
 let destSpy = sinon.spy(() => {
   return Promise.resolve();

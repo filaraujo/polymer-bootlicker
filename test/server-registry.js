@@ -4,8 +4,8 @@ import ServeRegistry from '../registries/server';
 
 let config = {
   paths: {
-    dist: './dist',
-    local: './dist/local'
+    local: './build/local',
+    dist: './build'
   }
 };
 
