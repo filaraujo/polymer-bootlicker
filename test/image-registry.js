@@ -50,7 +50,7 @@ test('registers a image task', t => {
   t.ok(taker.task('image'));
 });
 
-test.cb('sets the source and base form the configuration', t => {
+test.cb('sets the source and base from the configuration', t => {
   let taker = t.context.taker;
 
   taker.series('image')(() => {

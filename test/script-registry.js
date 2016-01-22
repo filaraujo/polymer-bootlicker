@@ -50,7 +50,7 @@ test('registers a script task', t => {
   t.ok(taker.task('script'));
 });
 
-test.cb('sets the source and base form the configuration', t => {
+test.cb('sets the source and base from the configuration', t => {
   let taker = t.context.taker;
 
   taker.series('script')(() => {
