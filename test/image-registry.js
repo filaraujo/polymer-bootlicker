@@ -47,13 +47,13 @@ test.beforeEach(t => {
 
 test('registers a image task', t => {
   let taker = t.context.taker;
-  t.ok(taker.task('image'));
+  t.ok(taker.task('image:copy'));
 });
 
 test.cb('sets the source and base from the configuration', t => {
   let taker = t.context.taker;
 
-  taker.series('image')(() => {
+  taker.series('image:copy')(() => {
     t.ok(srcSpy.firstCall.calledWith(config.paths.images));
     t.end();
   });
@@ -62,7 +62,7 @@ test.cb('sets the source and base from the configuration', t => {
 test.cb('moves into dest folder', t => {
   let taker = t.context.taker;
 
-  taker.series('image')(() => {
+  taker.series('image:copy')(() => {
     t.ok(destSpy.firstCall.calledWith(config.paths.local));
     t.end();
   });

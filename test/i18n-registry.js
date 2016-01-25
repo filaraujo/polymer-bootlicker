@@ -47,13 +47,13 @@ test.beforeEach(t => {
 
 test('registers a i18n task', t => {
   let taker = t.context.taker;
-  t.ok(taker.task('i18n'));
+  t.ok(taker.task('i18n:translate'));
 });
 
 // test.cb('sets the source and base from the configuration', t => {
 //   let taker = t.context.taker;
 //
-//   taker.series('i18n')(() => {
+//   taker.series('i18n:translate')(() => {
 //     t.ok(srcSpy.firstCall.calledWith(
 //       `${config.paths.local}/**/*`,
 //       {base: config.paths.local}
@@ -65,7 +65,7 @@ test('registers a i18n task', t => {
 // test.cb('moves into dest folder', t => {
 //   let taker = t.context.taker;
 //
-//   taker.series('i18n')(() => {
+//   taker.series('i18n:translate')(() => {
 //     t.ok(destSpy.firstCall.calledWith(
 //       config.paths.dist
 //     ));

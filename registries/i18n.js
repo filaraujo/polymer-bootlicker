@@ -20,7 +20,7 @@ function I18nRegistry(config = {}) {
 
   this.init = taker => {
     this.taker = taker;
-    taker.task('i18n', this.i18n);
+    taker.task('i18n:translate', this.i18n);
   };
 
   /**

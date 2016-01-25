@@ -47,13 +47,13 @@ test.beforeEach(t => {
 
 test('registers a script task', t => {
   let taker = t.context.taker;
-  t.ok(taker.task('script'));
+  t.ok(taker.task('script:copy'));
 });
 
 test.cb('sets the source and base from the configuration', t => {
   let taker = t.context.taker;
 
-  taker.series('script')(() => {
+  taker.series('script:copy')(() => {
     t.ok(srcSpy.firstCall.calledWith(
       config.paths.scripts,
       {base: config.paths.app}
@@ -65,7 +65,7 @@ test.cb('sets the source and base from the configuration', t => {
 test.cb('moves into dest folder', t => {
   let taker = t.context.taker;
 
-  taker.series('script')(() => {
+  taker.series('script:copy')(() => {
     t.ok(destSpy.firstCall.calledWith(config.paths.local));
     t.end();
   });

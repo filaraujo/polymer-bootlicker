@@ -47,13 +47,13 @@ test.beforeEach(t => {
 
 test('registers a style task', t => {
   let taker = t.context.taker;
-  t.ok(taker.task('style'));
+  t.ok(taker.task('style:copy'));
 });
 
 test.cb('sets the source and base from the configuration', t => {
   let taker = t.context.taker;
 
-  taker.series('style')(() => {
+  taker.series('style:copy')(() => {
     t.ok(srcSpy.firstCall.calledWith(
       config.paths.styles,
       {base: config.paths.app}
@@ -65,7 +65,7 @@ test.cb('sets the source and base from the configuration', t => {
 test.cb('moves into dest folder', t => {
   let taker = t.context.taker;
 
-  taker.series('style')(() => {
+  taker.series('style:copy')(() => {
     t.ok(destSpy.firstCall.calledWith(config.paths.local));
     t.end();
   });

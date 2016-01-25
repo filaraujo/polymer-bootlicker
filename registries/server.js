@@ -30,8 +30,8 @@ function ServerRegistry(config = {}) {
    * @param {object} taker undertaker object
    */
   this.init = taker => {
-    taker.task('reload', this.reload);
-    taker.task('serve', this.serve);
+    taker.task('server:reload', this.reload);
+    taker.task('server:serve', this.serve);
   };
 
   /**

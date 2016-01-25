@@ -25,7 +25,7 @@ function ImageRegistry(config = {}) {
    */
   this.init = taker => {
     this.taker = taker;
-    taker.task('image', this.image);
+    taker.task('image:copy', this.image);
   };
 
   /**

@@ -41,13 +41,13 @@ test('accepts local configuration', t => {
 test('adds default registries tasks', t => {
   let taker = new Undertaker();
   taker.registry(new Bootlicker({}));
-  t.ok(taker.task('font'));
-  t.ok(taker.task('i18n'));
-  t.ok(taker.task('image'));
-  t.ok(taker.task('reload'));
-  t.ok(taker.task('script'));
-  t.ok(taker.task('serve'));
-  t.ok(taker.task('style'));
+  t.ok(taker.task('font:copy'));
+  t.ok(taker.task('i18n:translate'));
+  t.ok(taker.task('image:copy'));
+  t.ok(taker.task('server:reload'));
+  t.ok(taker.task('server:serve'));
+  t.ok(taker.task('script:copy'));
+  t.ok(taker.task('style:copy'));
   t.ok(taker.task('test:local'));
   t.ok(taker.task('test:remote'));
 });

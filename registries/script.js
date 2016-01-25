@@ -30,7 +30,7 @@ function ScriptRegistry(config = {}) {
    */
   this.init = taker => {
     this.taker = taker;
-    taker.task('script', this.script);
+    taker.task('script:copy', this.script);
   };
 
   /**

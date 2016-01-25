@@ -39,7 +39,7 @@ function StyleRegistry(config = {}) {
    */
   this.init = taker => {
     this.taker = taker;
-    taker.task('style', this.style);
+    taker.task('style:copy', this.style);
   };
 
   /**

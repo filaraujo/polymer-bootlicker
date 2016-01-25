@@ -33,8 +33,8 @@ test.beforeEach(t => {
 
 test('registers server tasks', t => {
   let taker = t.context.taker;
-  t.ok(taker.task('reload'));
-  t.ok(taker.task('serve'));
+  t.ok(taker.task('server:reload'));
+  t.ok(taker.task('server:serve'));
 });
 
 // figure out how to test server processes

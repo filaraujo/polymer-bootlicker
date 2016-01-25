@@ -22,7 +22,7 @@ function FontRegistry(config = {}) {
    */
   this.init = taker => {
     this.taker = taker;
-    taker.task('font', this.font);
+    taker.task('font:copy', this.font);
   };
 
   /**
