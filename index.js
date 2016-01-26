@@ -1,6 +1,7 @@
 import util from 'util';
 import Registry from 'undertaker-registry';
 import FontRegistry from './registries/font';
+import HTMLRegistry from './registries/html';
 import I18nRegistry from './registries/i18n';
 import ImageRegistry from './registries/image';
 import ScriptRegistry from './registries/script';
@@ -24,6 +25,7 @@ const defaults = {
 
 const registries = [
   FontRegistry,
+  HTMLRegistry,
   I18nRegistry,
   ImageRegistry,
   ScriptRegistry,

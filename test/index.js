@@ -41,13 +41,24 @@ test('accepts local configuration', t => {
 test('adds default registries tasks', t => {
   let taker = new Undertaker();
   taker.registry(new Bootlicker({}));
-  t.ok(taker.task('font:copy'));
-  t.ok(taker.task('i18n:translate'));
-  t.ok(taker.task('image:copy'));
-  t.ok(taker.task('server:reload'));
-  t.ok(taker.task('server:serve'));
-  t.ok(taker.task('script:copy'));
-  t.ok(taker.task('style:copy'));
-  t.ok(taker.task('test:local'));
-  t.ok(taker.task('test:remote'));
+
+  [
+    'font:copy',
+    'i18n:translate',
+    'html:bower:copy',
+    'html:components:copy',
+    'html:polybuild',
+    'html:views:copy',
+    'html:views:process',
+    'i18n:translate',
+    'image:copy',
+    'server:reload',
+    'server:serve',
+    'script:copy',
+    'style:copy',
+    'test:local',
+    'test:remote'
+  ].forEach(function(task) {
+    t.ok(taker.task(task));
+  });
 });

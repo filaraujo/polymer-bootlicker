@@ -24,6 +24,9 @@
  - Testing (WCT)
   - [x] Implement full test suite
   - [ ] Implement single component
+ - Registries
+  - [ ] HTML - views as a path property
+  - [ ] HTML - process all views
  - Nice to Haves
   - [ ] Optimize redundant file copying (components)
   - [ ] Explore how to make this a package, not boilerplate
