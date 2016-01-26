@@ -18,6 +18,10 @@ function TidyRegistry(config = {}) {
   this.init = taker => {
     taker.task('tidy:dist', this.tidyDist);
     taker.task('tidy:tests', this.tidyTests);
+    taker.task('tidy', taker.parallel(
+      'tidy:dist',
+      'tidy:tests'
+    ));
   };
 
   /**

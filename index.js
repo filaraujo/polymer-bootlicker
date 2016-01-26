@@ -13,6 +13,7 @@ import TidyRegistry from './registries/tidy';
 const defaults = {
   paths: {
     app: './app',
+    components: './app/components/**/*',
     dist: './dist',
     fonts: './app/fonts/**/*',
     images: './app/**/*.{png,jpg,jpeg,gif}',
@@ -36,6 +37,19 @@ const registries = [
   TidyRegistry
 ];
 
+const copyResources = [
+  'font:copy',
+  'image:copy',
+  'script:copy',
+  'style:copy'
+];
+
+const copyHtml = [
+  'html:bower:copy',
+  'html:components:copy',
+  'html:views:copy'
+];
+
 /**
  * Bootlicker registry constructor
  * @param {object} config configuration object
@@ -49,6 +63,16 @@ function Bootlicker(config) {
     registries.forEach(Registry => {
       taker.registry(new Registry(this._config));
     }, this);
+
+    taker.task('assets:copy', taker.series(
+      'tidy',
+      taker.parallel(...copyResources),
+      taker.parallel(...copyHtml)
+    ));
+
+    taker.task('build', taker.series(
+      'assets:copy'
+    ));
   };
 }
 
