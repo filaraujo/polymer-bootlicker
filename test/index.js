@@ -57,7 +57,8 @@ test('adds default registries tasks', t => {
     'script:copy',
     'style:copy',
     'test:local',
-    'test:remote'
+    'tidy:dist',
+    'tidy:tests'
   ].forEach(function(task) {
     t.ok(taker.task(task));
   });

@@ -8,6 +8,7 @@ import ScriptRegistry from './registries/script';
 import ServerRegistry from './registries/server';
 import StyleRegistry from './registries/style';
 import TestRegistry from './registries/test';
+import TidyRegistry from './registries/tidy';
 
 const defaults = {
   paths: {
@@ -31,7 +32,8 @@ const registries = [
   ScriptRegistry,
   ServerRegistry,
   StyleRegistry,
-  TestRegistry
+  TestRegistry,
+  TidyRegistry
 ];
 
 /**
