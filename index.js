@@ -50,6 +50,11 @@ const copyHtml = [
   'html:views:copy'
 ];
 
+const optimizeHtml = [
+  'html:views:process',
+  'html:polybuild'
+];
+
 /**
  * Bootlicker registry constructor
  * @param {object} config configuration object
@@ -64,14 +69,21 @@ function Bootlicker(config) {
       taker.registry(new Registry(this._config));
     }, this);
 
-    taker.task('assets:copy', taker.series(
+    taker.task('build:copy', taker.series(
       'tidy',
       taker.parallel(...copyResources),
       taker.parallel(...copyHtml)
     ));
 
     taker.task('build', taker.series(
-      'assets:copy'
+      'build:copy',
+      'i18n:translate'
+    ));
+
+    taker.task('build:dist', taker.series(
+      'build:copy',
+      taker.series(...optimizeHtml),
+      'i18n:translate'
     ));
   };
 }
