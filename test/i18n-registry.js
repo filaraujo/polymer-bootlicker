@@ -1,6 +1,6 @@
 import test from 'ava';
 import Undertaker from 'undertaker';
-import I18nRegistry from '../registries/i18n';
+import I18nRegistry from '../src/registries/i18n';
 import sinon from 'sinon';
 
 let config = {

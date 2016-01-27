@@ -1,6 +1,6 @@
 import test from 'ava';
 import Undertaker from 'undertaker';
-import ServeRegistry from '../registries/server';
+import ServeRegistry from '../src/registries/server';
 
 let config = {
   paths: {

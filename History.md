@@ -1,4 +1,13 @@
 
+0.0.2 / 2016-01-26
+==================
+
+  * setup process to run src files through babel
+  * cleaning up package.json
+  * removing bower json
+  * folder restructuring
+  * Merged release/0.0.1 into develop
+
 0.0.1 / 2016-01-26
 ==================
 
