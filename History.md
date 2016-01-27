@@ -1,7 +1,42 @@
 
+0.0.1 / 2016-01-26
+==================
+
+  * cleaning up assets
+  * adding test tasks
+  * adding serve task
+  * adding build:dist task
+  * adding build task
+  * test cleanup
+  * adding tidy registry
+  * adding html registry
+  * adding namespaces to tasks
+  * adding more test for tests registry
+  * fixing typo in tests
+  * adding test registry
+  * varying config in tests so they dont match base config
+  * [wip] adding script registry - figure out  babel issue
+  * add paths to tests
+  * clean up test files
+  * adding server registry
+  * adding style registry
+  * adding image registry
+  * adding i18n
+  * adding link to travis badge
+  * updating font config
+  * add tests to check for font registration
+  * adding travis badge
+  * test cleanup
+  * tests for fontRegistry
+  * converting fonts into a registry
+  * adding travis.yml to project
+  * adding some low level tests
+  * first attempt at registry
+
 0.0.0 / 2016-01-26
 ==================
 
+  * adding changelog
   * fixing multiple running tests
   * adding first take at wct integration
   * removing jshint dependency
