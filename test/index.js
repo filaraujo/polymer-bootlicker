@@ -57,6 +57,7 @@ test('adds task from included registries', t => {
     'script:copy',
     'style:copy',
     'test:local',
+    'test:remote',
     'tidy:dist',
     'tidy:tests'
   ].forEach(function(task) {
