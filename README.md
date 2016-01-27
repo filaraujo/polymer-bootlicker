@@ -1,4 +1,5 @@
 # Polymer BootLicker
+[![Build Status](https://api.travis-ci.org/filaraujo/polymer-bootlicker.svg)](https://travis-ci.org/filaraujo/polymer-bootlicker)
 
 ---
 
@@ -23,6 +24,10 @@
  - Testing (WCT)
   - [x] Implement full test suite
   - [ ] Implement single component
+ - Registries
+  - [ ] HTML - views as a path property - and watch process
+  - [ ] HTML - process all views
+  - [ ] HTML - Error when paths.components not defined
  - Nice to Haves
   - [ ] Optimize redundant file copying (components)
   - [ ] Explore how to make this a package, not boilerplate
