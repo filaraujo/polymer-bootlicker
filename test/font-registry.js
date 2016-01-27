@@ -1,6 +1,6 @@
 import test from 'ava';
 import Undertaker from 'undertaker';
-import FontRegistry from '../lib/registries/font';
+import FontRegistry from '../src/registries/font';
 import sinon from 'sinon';
 
 let config = {
