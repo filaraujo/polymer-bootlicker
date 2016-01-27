@@ -1,0 +1,3 @@
+[submodule "examples/polymer-bootlicker-example"]
+	path = examples/polymer-bootlicker-example
+	url = https://github.com/filaraujo/polymer-bootlicker-example
