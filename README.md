@@ -3,6 +3,7 @@
 Polymer application
 
 [![Build Status](https://api.travis-ci.org/filaraujo/polymer-bootlicker.svg)](https://travis-ci.org/filaraujo/polymer-bootlicker)
+[![Coverage Status](https://coveralls.io/repos/github/filaraujo/polymer-bootlicker/badge.svg?branch=develop)](https://coveralls.io/github/filaraujo/polymer-bootlicker?branch=develop)
 
 ---
 
