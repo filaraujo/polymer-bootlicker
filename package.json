@@ -2,7 +2,7 @@
   "name": "polymer-bootlicker",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "ava test/**/* --verbose --require babel-register"
   },
@@ -32,5 +32,9 @@
     "polybuild": "^1.1.0",
     "undertaker": "^0.13.1",
     "web-component-tester": "^4.0.3"
-  }
+  },
+  "files": [
+    "lib",
+    "*.js"
+  ]
 }

@@ -1,6 +1,6 @@
 import test from 'ava';
 import Undertaker from 'undertaker';
-import TidyRegistry from '../registries/tidy';
+import TidyRegistry from '../lib/registries/tidy';
 
 test('exports a function', t => {
   t.true(typeof TidyRegistry === 'function');

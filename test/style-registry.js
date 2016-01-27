@@ -1,6 +1,6 @@
 import test from 'ava';
 import Undertaker from 'undertaker';
-import StyleRegistry from '../registries/style';
+import StyleRegistry from '../lib/registries/style';
 import sinon from 'sinon';
 
 let config = {

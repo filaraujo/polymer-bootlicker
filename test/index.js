@@ -1,5 +1,5 @@
 import test from 'ava';
-import Bootlicker from '../index';
+import Bootlicker from '../lib/index';
 import Undertaker from 'undertaker';
 
 test('exports a function', t => {
