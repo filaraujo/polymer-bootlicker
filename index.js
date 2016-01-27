@@ -80,7 +80,6 @@ function Bootlicker(config) {
   this.init = taker => {
     this.taker = taker;
 
-    // register each registry
     registries.forEach(Registry => {
       taker.registry(new Registry(this.config));
     }, this);
@@ -113,6 +112,16 @@ function Bootlicker(config) {
     taker.task('serve:dist', taker.series(
       'build:dist',
       'server:serve'
+    ));
+
+    taker.task('test', taker.series(
+      'build',
+      'test:local'
+    ));
+
+    taker.task('test:remote', taker.series(
+      'build',
+      'test:remote'
     ));
   };
 

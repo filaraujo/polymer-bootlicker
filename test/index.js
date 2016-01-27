@@ -72,7 +72,9 @@ test('adds default registries tasks', t => {
     'build',
     'build:dist',
     'serve',
-    'serve:dist'
+    'serve:dist',
+    'test',
+    'test:remote'
   ].forEach(function(task) {
     t.ok(taker.task(task));
   });
