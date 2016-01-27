@@ -15,12 +15,12 @@ test('exports a registry', t => {
 test('accepts a configuration', t => {
   let config = {foo: 'bar'};
   let bootlicker = new Bootlicker(config);
-  t.ok(bootlicker._config.foo);
+  t.ok(bootlicker.config.foo);
 });
 
 test('set default paths config', t => {
   let bootlicker = new Bootlicker({});
-  let {paths} = bootlicker._config;
+  let {paths} = bootlicker.config;
   t.ok(paths);
   t.is(paths.app, './app');
   t.is(paths.dist, './dist');
@@ -34,11 +34,11 @@ test('set default paths config', t => {
 
 test('accepts local configuration', t => {
   let fontPath = './app/fontz';
-  let bootlicker = new Bootlicker({paths: {font: fontPath}});
-  t.is(bootlicker._config.paths.font, fontPath);
+  let bootlicker = new Bootlicker({paths: {fonts: fontPath}});
+  t.is(bootlicker.config.paths.fonts, fontPath);
 });
 
-test('adds default registries tasks', t => {
+test('adds task from included registries', t => {
   let taker = new Undertaker();
   taker.registry(new Bootlicker({}));
 
@@ -59,6 +59,20 @@ test('adds default registries tasks', t => {
     'test:local',
     'tidy:dist',
     'tidy:tests'
+  ].forEach(function(task) {
+    t.ok(taker.task(task));
+  });
+});
+
+test('adds default registries tasks', t => {
+  let taker = new Undertaker();
+  taker.registry(new Bootlicker({}));
+
+  [
+    'build',
+    'build:dist',
+    'serve',
+    'serve:dist'
   ].forEach(function(task) {
     t.ok(taker.task(task));
   });

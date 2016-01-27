@@ -25,7 +25,7 @@
   - [x] Implement full test suite
   - [ ] Implement single component
  - Registries
-  - [ ] HTML - views as a path property
+  - [ ] HTML - views as a path property - and watch process
   - [ ] HTML - process all views
   - [ ] HTML - Error when paths.components not defined
  - Nice to Haves

@@ -55,18 +55,34 @@ const optimizeHtml = [
   'html:polybuild'
 ];
 
+const watchTasks = {
+  bower: 'html:bower:copy',
+  components: 'html:components:copy',
+  fonts: 'font:copy',
+  images: 'image:copy',
+  scripts: 'script:copy',
+  styles: 'style:copy'
+};
+
 /**
  * Bootlicker registry constructor
  * @param {object} config configuration object
  */
 function Bootlicker(config) {
-  this._config = Object.assign({}, defaults, config);
+  this.config = Object.assign({}, defaults, config);
 
   Registry.call(this);
 
+  /**
+   * init registry
+   * @param {object} taker undertaker object
+   */
   this.init = taker => {
+    this.taker = taker;
+
+    // register each registry
     registries.forEach(Registry => {
-      taker.registry(new Registry(this._config));
+      taker.registry(new Registry(this.config));
     }, this);
 
     taker.task('build:copy', taker.series(
@@ -85,6 +101,35 @@ function Bootlicker(config) {
       taker.series(...optimizeHtml),
       'i18n:translate'
     ));
+
+    taker.task('serve', taker.series(
+      'build',
+      taker.parallel(
+        'server:serve',
+        this.watch
+      )
+    ));
+
+    taker.task('serve:dist', taker.series(
+      'build:dist',
+      'server:serve'
+    ));
+  };
+
+  /**
+   * watch process
+   */
+  this.watch = () => {
+    let {config, taker} = this;
+    let {paths} = config;
+
+    Object.keys(watchTasks).forEach(function(task) {
+      taker.watch(paths[task], taker.series(
+        watchTasks[task],
+        'i18n:translate',
+        'server:reload'
+      ));
+    });
   };
 }
 
