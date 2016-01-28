@@ -10,16 +10,64 @@ tooling and provides a simplier, configurable alternative.
 
 ## Table of Contents
 
+- [Usage](#usage)
 - [Configuration](#configuration)
 - [Tasks](#tasks)
 - [Registries](#registries)
 
+## Usage
+
+
+```js
+import gulp from 'gulp';
+import Bootlicker from 'polymer-bootlicker';
+
+// register bootlicker
+gulp.registry(new Bootlicker(config));
+
+```
+
+
 ## Configuration
 
+By default Bootlicker defines
+```js
+{
+  paths: {
+    app: './app',
+    components: './app/components/**/*',
+    dist: './dist',
+    fonts: './app/fonts/**/*',
+    images: './app/**/*.{png,jpg,jpeg,gif}',
+    local: './dist/local',
+    locales: './locales',
+    scripts: './app/**/*.js',
+    styles: './app/**/*.css',
+    tests: './test'
+  }
+}
+```
+
+You may define a custom configuration
+```js
+// custom configuration
+let config = {
+  paths: {
+    dist: './build'
+  }
+};
+
+gulp.registry(new Bootlicker(config));
+```
+
 ## Tasks
-say something about the tasks
+list all tasks
+```
+gulp --tasks
+```
 
 ### Build
+
 ```
 gulp build
 ```
