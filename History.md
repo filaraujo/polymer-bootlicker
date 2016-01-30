@@ -1,4 +1,16 @@
 
+0.0.3 / 2016-01-29
+==================
+
+  * adding documentation
+  * adding configuration documentation
+  * adding documentation placeholders
+  * adding coverage support
+  * updating readme
+  * adding polymer-bootlicker-example submodule
+  * fix travis by adding babel install step
+  * Merged release/0.0.2 into develop
+
 0.0.2 / 2016-01-26
 ==================
 
