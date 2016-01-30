@@ -119,7 +119,7 @@ function Bootlicker(config) {
       'test:local'
     ));
 
-    taker.task('test:remote', taker.series(
+    taker.task('test:sauce', taker.series(
       'build',
       'test:remote'
     ));
