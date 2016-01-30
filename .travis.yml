@@ -2,3 +2,7 @@ sudo: false
 language: node_js
 node_js:
   - '5.0.0'
+install:
+  - npm install -g babel-cli
+  - npm install
+after_success: npm run coverage

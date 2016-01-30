@@ -1,6 +1,6 @@
 {
   "name": "polymer-bootlicker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Filipe Araujo <filipe.alves.araujo@gmail.com>",
   "description": "",
   "dependencies": {
@@ -26,6 +26,8 @@
   },
   "devDependencies": {
     "ava": "^0.9.1",
+    "coveralls": "^2.11.6",
+    "nyc": "^5.5.0",
     "sinon": "^1.17.2"
   },
   "files": [
@@ -36,7 +38,8 @@
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel --source-maps -d lib/ src/",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prepublish": "npm run compile",
-    "test": "ava test/**/* --verbose --require babel-register"
+    "test": "nyc ava test/**/* --verbose --require babel-register"
   }
 }
