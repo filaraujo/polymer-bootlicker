@@ -23,6 +23,7 @@ test('set default paths config', t => {
   let {paths} = bootlicker.config;
   t.ok(paths);
   t.is(paths.app, './app');
+  t.is(paths.bower, './bower_components');
   t.is(paths.dist, './dist');
   t.is(paths.fonts, './app/fonts/**/*');
   t.is(paths.images, './app/**/*.{png,jpg,jpeg,gif}');

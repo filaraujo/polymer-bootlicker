@@ -13,6 +13,7 @@ import TidyRegistry from './registries/tidy';
 const defaults = {
   paths: {
     app: './app',
+    bower: './bower_components',
     components: './app/components/**/*',
     dist: './dist',
     fonts: './app/fonts/**/*',
@@ -21,7 +22,8 @@ const defaults = {
     locales: './locales',
     scripts: './app/**/*.js',
     styles: './app/**/*.css',
-    tests: './test'
+    tests: './test',
+    views: `./app/index.html`
   }
 };
 
@@ -61,7 +63,8 @@ const watchTasks = {
   fonts: 'font:copy',
   images: 'image:copy',
   scripts: 'script:copy',
-  styles: 'style:copy'
+  styles: 'style:copy',
+  views: 'html:views:copy'
 };
 
 /**
@@ -133,6 +136,7 @@ function Bootlicker(config) {
     let {paths} = config;
 
     Object.keys(watchTasks).forEach(function(task) {
+      console.log(paths[task]);
       taker.watch(paths[task], taker.series(
         watchTasks[task],
         'i18n:translate',

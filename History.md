@@ -1,4 +1,12 @@
 
+0.0.4 / 2016-02-03
+==================
+
+  * updating version
+  * adding views as a default config path
+  * adding bower_components as default path
+  * Merged release/0.0.3 into develop
+
 0.0.3 / 2016-01-29
 ==================
 
