@@ -64,9 +64,8 @@ function HTMLRegistry(config = {}) {
    */
   this.copyViews = () => {
     let {taker} = this;
-    let viewAssets = `${paths.app}/index.html`;
 
-    return taker.src(viewAssets)
+    return taker.src(paths.views)
         .pipe(size({title: 'pages'}))
         .pipe(taker.dest(paths.local));
   };
