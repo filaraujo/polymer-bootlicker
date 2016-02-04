@@ -13,6 +13,7 @@ import TidyRegistry from './registries/tidy';
 const defaults = {
   paths: {
     app: './app',
+    bower: './bower_components',
     components: './app/components/**/*',
     dist: './dist',
     fonts: './app/fonts/**/*',
