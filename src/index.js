@@ -1,4 +1,5 @@
 import util from 'util';
+import defaultsDeep from 'lodash.defaultsdeep';
 import Registry from 'undertaker-registry';
 import FontRegistry from './registries/font';
 import HTMLRegistry from './registries/html';
@@ -72,7 +73,8 @@ const watchTasks = {
  * @param {object} config configuration object
  */
 function Bootlicker(config) {
-  this.config = Object.assign({}, defaults, config);
+  this.config = {};
+  defaultsDeep(this.config, config, defaults);
 
   Registry.call(this);
 

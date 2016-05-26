@@ -39,6 +39,12 @@ test('accepts local configuration', t => {
   t.is(bootlicker.config.paths.fonts, fontPath);
 });
 
+test('deep extends any non configured paths', t => {
+  let fontPath = './app/fontz';
+  let bootlicker = new Bootlicker({paths: {fonts: fontPath}});
+  t.ok(bootlicker.config.paths.app);
+});
+
 test('adds task from included registries', t => {
   let taker = new Undertaker();
   taker.registry(new Bootlicker({}));
