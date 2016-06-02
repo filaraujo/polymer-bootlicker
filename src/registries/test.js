@@ -8,8 +8,8 @@ import wct from 'web-component-tester';
  */
 function TestRegistry(config = {}) {
   const {paths} = config;
-  const wctLocalConfig = {local: {}};
-  const wctSauceConfig = {sauce: {}};
+  const wctLocalConfig = {plugins: {local: {}}};
+  const wctSauceConfig = {plugins: {sauce: {}}};
 
   // check paths
   if (!paths || !paths.tests) {
@@ -17,7 +17,10 @@ function TestRegistry(config = {}) {
   }
 
   const wctConfig = {
-    suites: [`${paths.tests}/**/tests/index.html`]
+    suites: [
+      `${paths.tests}/**/tests/index.html`,
+      `${paths.tests}/**/test/index.html`
+    ]
   };
 
   Registry.call(this);
@@ -41,24 +44,28 @@ function TestRegistry(config = {}) {
   this.copy = () => {
     let {taker} = this;
 
-    return taker.src(`${paths.local}/components/**/*`)
+    return taker.src(`${paths.local}/assets/components/**/*`)
       .pipe(taker.dest(paths.tests));
   };
 
   /**
    * test locally
+   *
+   * @param {funcion} cb callback
    * @return {object} wct object
    */
-  this.local = () => {
-    return wct.test(Object.assign({}, wctLocalConfig, wctConfig));
+  this.local = cb => {
+    return wct.test(Object.assign({}, wctLocalConfig, wctConfig), cb);
   };
 
   /**
    * test remotely
+   *
+   * @param {funcion} cb callback
    * @return {object} wct object
    */
-  this.remote = () => {
-    return wct.test(Object.assign({}, wctSauceConfig, wctConfig));
+  this.remote = cb => {
+    return wct.test(Object.assign({}, wctSauceConfig, wctConfig), cb);
   };
 }
 

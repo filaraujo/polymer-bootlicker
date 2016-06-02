@@ -60,7 +60,7 @@ test.cb('#test:copy sets the source and base from the configuration', t => {
 
   taker.parallel('test:copy')(() => {
     t.ok(srcSpy.firstCall.calledWith(
-      `${config.paths.local}/components/**/*`
+      `${config.paths.local}/assets/components/**/*`
     ));
     t.end();
   });

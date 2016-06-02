@@ -40,6 +40,7 @@ Default path configuration
 {
   paths: {
     app: './app',
+    bower: './bower_components',
     components: './app/components/**/*',
     dist: './dist',
     fonts: './app/fonts/**/*',
