@@ -1,9 +1,10 @@
 import util from 'util';
 import autoprefixer from 'gulp-autoprefixer';
 import nano from 'gulp-cssnano';
+import Registry from 'undertaker-registry';
 import size from 'gulp-size';
 import sourcemaps from 'gulp-sourcemaps';
-import Registry from 'undertaker-registry';
+import through from 'through2';
 
 const autoprefixerConfig = [
   'ie >= 10',
@@ -25,6 +26,9 @@ const sourcemapsConfig = ['.', {}];
  */
 function StyleRegistry(config = {}) {
   const {paths} = config;
+  const styleTransforms = (config.transforms || {}).styles || {};
+  const {preprocess = through.obj} = styleTransforms;
+  const {postprocess = through.obj} = styleTransforms;
 
   // check paths
   if (!paths || !paths.styles) {
@@ -50,11 +54,13 @@ function StyleRegistry(config = {}) {
     let {taker} = this;
 
     return taker.src(paths.styles, {base: paths.app})
+      .pipe(preprocess())
       .pipe(autoprefixer(autoprefixerConfig))
       .pipe(sourcemaps.init())
       .pipe(nano(nanoConfig))
       .pipe(sourcemaps.init())
       .pipe(sourcemaps.write(...sourcemapsConfig))
+      .pipe(postprocess())
       .pipe(size({title: 'styles'}))
       .pipe(taker.dest(paths.local));
   };
