@@ -138,7 +138,6 @@ function Bootlicker(config) {
     let {paths} = config;
 
     Object.keys(watchTasks).forEach(function(task) {
-      console.log(paths[task]);
       taker.watch(paths[task], taker.series(
         watchTasks[task],
         'i18n:translate',

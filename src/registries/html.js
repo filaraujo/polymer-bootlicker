@@ -73,14 +73,19 @@ function HTMLRegistry(config = {}) {
 
   /**
    * polybuild elements
+   * @param {function} cb callback function
    * @return {object} taker object
    */
-  this.polybuild = () => {
+  this.polybuild = cb => {
     let {taker} = this;
-    let elementAssets = `${paths.local}/components/elements.html`;
+    let {fragments} = paths;
     let dest = `${paths.local}/components`;
 
-    return taker.src(elementAssets)
+    if (!fragments) {
+      return cb();
+    }
+
+    return taker.src(fragments)
       .pipe(polybuild(polybuildConfig))
       .pipe(taker.dest(dest));
   };

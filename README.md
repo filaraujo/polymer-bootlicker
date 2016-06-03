@@ -43,6 +43,7 @@ Default path configuration
     bower: './bower_components',
     components: './app/components/**/*',
     dist: './dist',
+    fragments: './app/components/elements.html',
     fonts: './app/fonts/**/*',
     images: './app/**/*.{png,jpg,jpeg,gif}',
     local: './dist/local',
