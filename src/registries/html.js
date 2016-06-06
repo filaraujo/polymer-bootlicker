@@ -38,8 +38,8 @@ function HTMLRegistry(config = {}) {
   this.copyBower = () => {
     let bowerAssets = [
       `${paths.bower}/**/*`,
-      `!${paths.bower}/**/test/*`,
-      `!${paths.bower}/**/tests/*`
+      `!${paths.bower}/**/test/**`,
+      `!${paths.bower}/**/tests/**`
     ];
     let {taker} = this;
 

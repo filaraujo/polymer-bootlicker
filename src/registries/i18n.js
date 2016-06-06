@@ -29,8 +29,11 @@ function I18nRegistry(config = {}) {
    */
   this.i18n = () => {
     let {taker} = this;
+    let assetsPaths = [
+      `${paths.local}/**/*`
+    ];
 
-    return taker.src(`${paths.local}/**/*`, {base: paths.local})
+    return taker.src(assetsPaths, {base: paths.local})
       .pipe(i18n(i18nConfig))
       .pipe(taker.dest(paths.dist));
   };

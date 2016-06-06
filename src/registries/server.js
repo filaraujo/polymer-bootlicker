@@ -9,7 +9,7 @@ import Registry from 'undertaker-registry';
 function ServerRegistry(config = {}) {
   const {paths} = config;
   const server = browserSync.create();
-  const serverConfig = {
+  const serverDefaults = {
     server: {
       baseDir: [
         `${paths.dist}/en-US`,
@@ -17,6 +17,8 @@ function ServerRegistry(config = {}) {
       ]
     }
   };
+  const serverOptions = (config.options || {}).server || {};
+  const serverConfig = Object.assign({}, serverDefaults, serverOptions);
 
   // check paths
   if (!paths || !paths.dist || !paths.local) {
