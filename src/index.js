@@ -44,11 +44,7 @@ const copyResources = [
   'font:copy',
   'image:copy',
   'script:copy',
-  'style:copy'
-];
-
-const copyHtml = [
-  'html:bower:copy',
+  'style:copy',
   'html:components:copy',
   'html:views:copy'
 ];
@@ -91,17 +87,19 @@ function Bootlicker(config) {
 
     taker.task('build:copy', taker.series(
       'tidy',
-      taker.parallel(...copyResources),
-      taker.parallel(...copyHtml)
+      taker.parallel(...copyResources)
     ));
 
     taker.task('build', taker.series(
       'build:copy',
+      'html:bower:copy',
       'i18n:translate'
     ));
 
     taker.task('build:dist', taker.series(
       'build:copy',
+      'script:optimize',
+      'html:bower:copy',
       taker.series(...optimizeHtml),
       'i18n:translate'
     ));

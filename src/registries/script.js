@@ -31,6 +31,7 @@ function ScriptRegistry(config = {}) {
   this.init = taker => {
     this.taker = taker;
     taker.task('script:copy', this.script);
+    taker.task('script:optimize', this.optimize);
   };
 
   /**
@@ -46,9 +47,22 @@ function ScriptRegistry(config = {}) {
       .pipe(eslint.failAfterError())
       .pipe(sourcemaps.init())
       .pipe(babel(babelConfig))
-      .pipe(uglify(uglifyConfig))
       .pipe(sourcemaps.write(...sourcemapsConfig))
       .pipe(size({title: 'scripts'}))
+      .pipe(taker.dest(paths.local));
+  };
+
+  /**
+   * optimize scripts
+   * @return {object} taker object
+   */
+  this.optimize = () => {
+    let {taker} = this;
+
+    return taker.src(`${paths.local}/**/*.js`)
+      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(uglify(uglifyConfig))
+      .pipe(sourcemaps.write('.', {}))
       .pipe(taker.dest(paths.local));
   };
 }
