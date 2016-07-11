@@ -39,8 +39,9 @@ function ServerRegistry(config = {}) {
   /**
    * reloads the application
    */
-  this.reload = () => {
+  this.reload = cb => {
     server.reload();
+    cb();
   };
 
   /**
