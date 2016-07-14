@@ -1,4 +1,18 @@
 
+0.0.6 / 2016-07-14
+==================
+  * Release 0.0.6
+  * Merge pull request #3 from fusionstrings/patch-1
+  * uglify only on distribution process
+  * localization fixes
+  * adding fragment support
+  * style registry now accepts preprocess and postprocess transforms
+  * fix test configuration
+
+0.0.5 / 2016-05-26
+==================
+  * deep assign configuration
+
 0.0.4 / 2016-02-03
 ==================
 
