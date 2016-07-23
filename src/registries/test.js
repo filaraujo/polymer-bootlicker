@@ -44,7 +44,7 @@ function TestRegistry(config = {}) {
   this.copy = () => {
     let {taker} = this;
 
-    return taker.src(`${paths.local}/assets/components/**/*`)
+    return taker.src(`${paths.local}/components/**/*`)
       .pipe(taker.dest(paths.tests));
   };
 

@@ -44,7 +44,7 @@ function HTMLRegistry(config = {}) {
     let {taker} = this;
 
     return taker.src(bowerAssets, {base: paths.bower})
-      .pipe(taker.dest(`${paths.local}/assets/components`));
+      .pipe(taker.dest(`${paths.local}/components`));
   };
 
   /**
