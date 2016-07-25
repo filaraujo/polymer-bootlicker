@@ -15,7 +15,7 @@ const defaults = {
   paths: {
     app: './app',
     bower: './bower_components',
-    components: './app/components/**/*',
+    components: './app/components/**/*.html',
     dist: './dist',
     fonts: './app/fonts/**/*',
     images: './app/**/*.{png,jpg,jpeg,gif}',
