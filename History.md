@@ -1,4 +1,10 @@
 
+0.0.9 / 2016-08-11
+==================
+
+  * releasing 0.0.9
+  * wct now receives configuration from bootlicker init
+
 0.0.6 / 2016-07-14
 ==================
   * Release 0.0.6
