@@ -20,6 +20,7 @@
     "gulp-uglify": "^1.5.1",
     "gulp-useref": "^3.0.3",
     "lazypipe": "^1.0.1",
+    "lodash.defaults": "^4.1.0",
     "lodash.defaultsdeep": "^4.4.0",
     "polybuild": "^1.1.0",
     "undertaker": "^0.13.1",

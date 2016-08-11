@@ -6,6 +6,7 @@ import sinon from 'sinon';
 let config = {
   paths: {
     app: './application',
+    local: './dist/local',
     tests: './tests/**/*'
   }
 };
@@ -59,8 +60,8 @@ test.cb('#test:copy sets the source and base from the configuration', t => {
   let taker = t.context.taker;
 
   taker.parallel('test:copy')(() => {
-    t.ok(srcSpy.firstCall.calledWith(
-      `${config.paths.local}/assets/components/**/*`
+    t.true(srcSpy.firstCall.calledWith(
+      `${config.paths.local}/components/**/*`
     ));
     t.end();
   });

@@ -1,4 +1,5 @@
 import util from 'util';
+import defaults from 'lodash.defaults';
 import Registry from 'undertaker-registry';
 import wct from 'web-component-tester';
 
@@ -8,6 +9,7 @@ import wct from 'web-component-tester';
  */
 function TestRegistry(config = {}) {
   const {paths} = config;
+  const testOptions = (config.options || {}).test || {};
   const wctLocalConfig = {plugins: {local: {}}};
   const wctSauceConfig = {plugins: {sauce: {}}};
 
@@ -55,7 +57,7 @@ function TestRegistry(config = {}) {
    * @return {object} wct object
    */
   this.local = cb => {
-    return wct.test(Object.assign({}, wctLocalConfig, wctConfig), cb);
+    return wct.test(defaults(wctConfig, testOptions, wctLocalConfig), cb);
   };
 
   /**
@@ -65,7 +67,7 @@ function TestRegistry(config = {}) {
    * @return {object} wct object
    */
   this.remote = cb => {
-    return wct.test(Object.assign({}, wctSauceConfig, wctConfig), cb);
+    return wct.test(defaults(wctConfig, testOptions, wctSauceConfig), cb);
   };
 }
 
