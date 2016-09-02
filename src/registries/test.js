@@ -10,8 +10,6 @@ import wct from 'web-component-tester';
 function TestRegistry(config = {}) {
   const {paths} = config;
   const testOptions = (config.options || {}).test || {};
-  const wctLocalConfig = {plugins: {local: {}}};
-  const wctSauceConfig = {plugins: {sauce: {}}};
 
   // check paths
   if (!paths || !paths.tests) {
@@ -57,17 +55,21 @@ function TestRegistry(config = {}) {
    * @return {object} wct object
    */
   this.local = cb => {
-    return wct.test(defaults(wctConfig, testOptions, wctLocalConfig), cb);
+    let options = defaults(wctConfig, testOptions);
+    options.plugins.sauce = undefined;
+    return wct.test(options, cb);
   };
 
   /**
-   * test remotely
+   * test remotelyb
    *
    * @param {funcion} cb callback
    * @return {object} wct object
    */
   this.remote = cb => {
-    return wct.test(defaults(wctConfig, testOptions, wctSauceConfig), cb);
+    let options = defaults(wctConfig, testOptions);
+    options.plugins.local = undefined;
+    return wct.test(options, cb);
   };
 }
 
