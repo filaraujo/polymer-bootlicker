@@ -4,8 +4,8 @@
   "author": "Filipe Araujo <filipe.alves.araujo@gmail.com>",
   "description": "",
   "dependencies": {
-    "babel-preset-es2015": "^6.3.13",
-    "browser-sync": "^2.10.1",
+    "babel-preset-es2015": "^6.16.0",
+    "browser-sync": "^2.17.3",
     "del": "^2.2.0",
     "eslint-config-google": "^0.6.0",
     "gulp-babel": "^6.1.1",
@@ -15,15 +15,16 @@
     "gulp-i18n-localize": "^1.2.1",
     "gulp-imagemin": "^3.0.0",
     "gulp-size": "^2.0.0",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-sourcemaps": "^2.1.1",
     "gulp-uglify": "^2.0.0",
     "gulp-useref": "^3.0.3",
     "lazypipe": "^1.0.1",
     "lodash.defaults": "^4.1.0",
     "lodash.defaultsdeep": "^4.4.0",
+    "nyc": "^8.3.1",
     "polybuild": "^1.1.0",
     "undertaker": "^1.0.0",
-    "web-component-tester": "^4.2.2"
+    "web-component-tester": "^4.3.5"
   },
   "devDependencies": {
     "ava": "^0.16.0",
